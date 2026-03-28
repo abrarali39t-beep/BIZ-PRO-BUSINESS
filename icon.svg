@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7c6fff"/>
+      <stop offset="100%" style="stop-color:#4f3ff0"/>
+    </linearGradient>
+    <linearGradient id="shine" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.18"/>
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background rounded square -->
+  <rect width="512" height="512" rx="110" fill="url(#bg)"/>
+
+  <!-- Shine overlay -->
+  <rect width="512" height="256" rx="110" fill="url(#shine)"/>
+
+  <!-- Chart bars (representing business analytics) -->
+  <rect x="90" y="310" width="58" height="120" rx="10" fill="rgba(255,255,255,0.25)"/>
+  <rect x="172" y="250" width="58" height="180" rx="10" fill="rgba(255,255,255,0.40)"/>
+  <rect x="254" y="190" width="58" height="240" rx="10" fill="rgba(255,255,255,0.60)"/>
+  <rect x="336" y="140" width="58" height="290" rx="10" fill="rgba(255,255,255,0.85)"/>
+
+  <!-- Trend line over bars -->
+  <polyline
+    points="119,310 201,250 283,190 365,140"
+    fill="none"
+    stroke="#ffffff"
+    stroke-width="12"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+  <!-- Dots on trend line -->
+  <circle cx="119" cy="310" r="10" fill="#ffffff"/>
+  <circle cx="201" cy="250" r="10" fill="#ffffff"/>
+  <circle cx="283" cy="190" r="10" fill="#ffffff"/>
+  <circle cx="365" cy="140" r="10" fill="#ffffff"/>
+
+  <!-- "B" lettermark top-left -->
+  <text x="80" y="130" font-family="Georgia, serif" font-weight="900" font-size="92" fill="#ffffff" opacity="0.95">Biz</text>
+
+  <!-- Baseline -->
+  <rect x="76" y="446" width="360" height="8" rx="4" fill="rgba(255,255,255,0.3)"/>
+</svg>
