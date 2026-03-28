@@ -1,12 +1,17 @@
+```json
 {
   "name": "BizPro - Business Management",
   "short_name": "BizPro",
   "description": "Professional business management suite for daily sales, expenses, invoices & reports",
-  "start_url": "/",
+
+  "start_url": "/BIZ-PRO-BUSINESS/",
+  "scope": "/BIZ-PRO-BUSINESS/",
+
   "display": "standalone",
   "orientation": "portrait-primary",
   "background_color": "#0b0d14",
   "theme_color": "#6c63ff",
+
   "icons": [
     {
       "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect width='192' height='192' rx='32' fill='%236c63ff'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' font-size='96' font-family='sans-serif' font-weight='bold' fill='white'>B</text></svg>",
@@ -21,20 +26,22 @@
       "purpose": "any maskable"
     }
   ],
-  "screenshots": [],
+
   "categories": ["business", "finance", "productivity"],
+
   "shortcuts": [
     {
       "name": "Dashboard",
       "short_name": "Dashboard",
-      "url": "/?page=dashboard",
+      "url": "/BIZ-PRO-BUSINESS/?page=dashboard",
       "description": "View business dashboard"
     },
     {
       "name": "Add Sale",
       "short_name": "New Sale",
-      "url": "/?page=sales",
+      "url": "/BIZ-PRO-BUSINESS/?page=sales",
       "description": "Record a new sale"
     }
   ]
 }
+```
