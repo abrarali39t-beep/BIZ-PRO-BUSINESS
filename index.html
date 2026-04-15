@@ -21,84 +21,101 @@
 </head>
 <body>
 <style>
+/* ===================== FIX 1: FONT SIZES REDUCED GLOBALLY ===================== */
 :root{--accent:#6c63ff;--accent-light:#8b84ff;--accent-glow:rgba(108,99,255,0.28);--success:#22c55e;--danger:#ef4444;--warning:#f59e0b;--info:#38bdf8;--font-body:'DM Sans',sans-serif;--font-display:'Syne',sans-serif;--radius:14px;--radius-sm:8px;--shadow:0 4px 24px rgba(0,0,0,0.18);--transition:0.22s cubic-bezier(0.4,0,0.2,1);}
 [data-theme="dark"]{--bg:#0b0d14;--surface:#12151f;--surface2:#1a1e2e;--surface3:#222739;--border:#2a2f45;--text:#e8eaf6;--text-muted:#7b80a0;--text-dim:#4a5070;--card-bg:#151823;--sidebar-bg:#0e1120;--nav-bg:rgba(11,13,20,0.94);}
 [data-theme="light"]{--bg:#f0f2fb;--surface:#ffffff;--surface2:#f7f8fc;--surface3:#eef0fa;--border:#dde1f0;--text:#1a1d2e;--text-muted:#6b7094;--text-dim:#a8adc8;--card-bg:#ffffff;--sidebar-bg:#ffffff;--nav-bg:rgba(240,242,251,0.96);}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:var(--font-body);background:var(--bg);color:var(--text);font-size:15px;line-height:1.6;transition:background var(--transition),color var(--transition);overflow-x:hidden;}
+/* BASE FONT SIZE REDUCED: 15px → 13px */
+body{font-family:var(--font-body);background:var(--bg);color:var(--text);font-size:13px;line-height:1.5;transition:background var(--transition),color var(--transition);overflow-x:hidden;}
 a{color:inherit;text-decoration:none;}button{cursor:pointer;font-family:var(--font-body);border:none;}
 input,select,textarea{font-family:var(--font-body);}
 ::-webkit-scrollbar{width:5px;height:5px;}::-webkit-scrollbar-track{background:transparent;}::-webkit-scrollbar-thumb{background:var(--border);border-radius:99px;}
 .loading-overlay{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;z-index:2000;flex-direction:column;gap:18px;}
 .loading-logo-wrap{display:flex;align-items:center;gap:12px;}
-.loading-logo-wrap img{width:48px;height:48px;border-radius:12px;}
-.loading-logo{font-family:var(--font-display);font-size:32px;font-weight:800;color:var(--accent);animation:pulse 1.5s ease-in-out infinite;}
-.spinner{display:inline-block;width:26px;height:26px;border:3px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin 0.7s linear infinite;}
+.loading-logo-wrap img{width:40px;height:40px;border-radius:12px;}
+/* LOADING LOGO: 32px → 24px */
+.loading-logo{font-family:var(--font-display);font-size:24px;font-weight:800;color:var(--accent);animation:pulse 1.5s ease-in-out infinite;}
+.spinner{display:inline-block;width:22px;height:22px;border:3px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin 0.7s linear infinite;}
 #auth-screen{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;background:var(--bg);background-image:radial-gradient(ellipse at 20% 50%,rgba(108,99,255,0.13) 0%,transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(34,197,94,0.07) 0%,transparent 50%);}
-.auth-card{background:var(--surface);border:1px solid var(--border);border-radius:24px;padding:44px 38px;width:100%;max-width:430px;box-shadow:var(--shadow),0 0 60px rgba(108,99,255,0.08);animation:fadeUp 0.45s ease;}
-.auth-brand{display:flex;align-items:center;gap:12px;margin-bottom:6px;}
-.auth-brand img{width:40px;height:40px;border-radius:10px;}
-.auth-logo{font-family:var(--font-display);font-size:26px;font-weight:800;color:var(--accent);letter-spacing:-0.5px;}
+.auth-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:36px 30px;width:100%;max-width:400px;box-shadow:var(--shadow),0 0 60px rgba(108,99,255,0.08);animation:fadeUp 0.45s ease;}
+.auth-brand{display:flex;align-items:center;gap:10px;margin-bottom:4px;}
+.auth-brand img{width:34px;height:34px;border-radius:9px;}
+/* AUTH LOGO: 26px → 20px */
+.auth-logo{font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--accent);letter-spacing:-0.5px;}
 .auth-logo span{color:var(--text);}
-.auth-subtitle{color:var(--text-muted);font-size:13px;margin-bottom:30px;padding-left:2px;}
-.auth-tabs{display:flex;gap:4px;background:var(--surface2);padding:4px;border-radius:10px;margin-bottom:26px;}
-.auth-tab{flex:1;padding:9px;border:none;background:transparent;color:var(--text-muted);border-radius:7px;font-size:14px;font-weight:500;transition:all var(--transition);}
+/* SUBTITLE: 13px → 12px */
+.auth-subtitle{color:var(--text-muted);font-size:12px;margin-bottom:24px;padding-left:2px;}
+.auth-tabs{display:flex;gap:4px;background:var(--surface2);padding:4px;border-radius:10px;margin-bottom:20px;}
+.auth-tab{flex:1;padding:8px;border:none;background:transparent;color:var(--text-muted);border-radius:7px;font-size:12px;font-weight:500;transition:all var(--transition);}
 .auth-tab.active{background:var(--accent);color:#fff;box-shadow:0 2px 12px var(--accent-glow);}
-.form-group{margin-bottom:15px;}
-.form-label{display:block;font-size:13px;font-weight:500;color:var(--text-muted);margin-bottom:6px;}
-.form-control{width:100%;padding:11px 15px;background:var(--surface2);border:1px solid var(--border);border-radius:10px;color:var(--text);font-size:14px;transition:border-color var(--transition),box-shadow var(--transition);outline:none;}
+.form-group{margin-bottom:12px;}
+/* FORM LABEL: 13px → 11px */
+.form-label{display:block;font-size:11px;font-weight:500;color:var(--text-muted);margin-bottom:5px;}
+/* FORM CONTROL: 14px → 12px */
+.form-control{width:100%;padding:9px 13px;background:var(--surface2);border:1px solid var(--border);border-radius:9px;color:var(--text);font-size:12px;transition:border-color var(--transition),box-shadow var(--transition);outline:none;}
 .form-control:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-glow);}
 .form-control::placeholder{color:var(--text-dim);}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
 select.form-control option{background:var(--surface2);}textarea.form-control{resize:vertical;}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border:none;border-radius:10px;font-size:14px;font-weight:600;transition:all var(--transition);cursor:pointer;white-space:nowrap;}
-.btn-primary{background:var(--accent);color:#fff;width:100%;justify-content:center;padding:13px;box-shadow:0 4px 16px var(--accent-glow);}
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:6px;padding:9px 16px;border:none;border-radius:9px;font-size:12px;font-weight:600;transition:all var(--transition);cursor:pointer;white-space:nowrap;}
+.btn-primary{background:var(--accent);color:#fff;width:100%;justify-content:center;padding:11px;box-shadow:0 4px 16px var(--accent-glow);}
 .btn-primary:hover{background:var(--accent-light);transform:translateY(-1px);}
 .btn-secondary{background:var(--surface2);color:var(--text);border:1px solid var(--border);}
 .btn-secondary:hover{background:var(--surface3);}
 .btn-danger{background:rgba(239,68,68,0.12);color:var(--danger);border:1px solid rgba(239,68,68,0.2);}
 .btn-danger:hover{background:rgba(239,68,68,0.22);}
-.btn-sm{padding:7px 13px;font-size:13px;border-radius:7px;}
-.btn-icon{padding:8px;border-radius:8px;aspect-ratio:1;justify-content:center;}
+.btn-sm{padding:6px 11px;font-size:11px;border-radius:7px;}
+.btn-icon{padding:6px;border-radius:7px;aspect-ratio:1;justify-content:center;}
 #app{display:none;height:100vh;overflow:hidden;}#app.visible{display:flex;}
-.sidebar{width:256px;min-width:256px;background:var(--sidebar-bg);border-right:1px solid var(--border);display:flex;flex-direction:column;overflow-y:auto;overflow-x:hidden;transition:width var(--transition),min-width var(--transition);position:relative;z-index:100;}
-.sidebar.collapsed{width:66px;min-width:66px;}
-.sidebar-header{padding:18px 16px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);gap:10px;}
-.sidebar-brand{display:flex;align-items:center;gap:10px;overflow:hidden;}
-.sidebar-icon{width:32px;height:32px;border-radius:8px;flex-shrink:0;}
-.sidebar-logo{font-family:var(--font-display);font-size:18px;font-weight:800;color:var(--accent);letter-spacing:-0.4px;white-space:nowrap;overflow:hidden;transition:opacity var(--transition),width var(--transition);}
+/* SIDEBAR */
+.sidebar{width:232px;min-width:232px;background:var(--sidebar-bg);border-right:1px solid var(--border);display:flex;flex-direction:column;overflow-y:auto;overflow-x:hidden;transition:width var(--transition),min-width var(--transition);position:relative;z-index:100;}
+.sidebar.collapsed{width:60px;min-width:60px;}
+.sidebar-header{padding:14px 13px 12px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);gap:8px;}
+.sidebar-brand{display:flex;align-items:center;gap:8px;overflow:hidden;}
+.sidebar-icon{width:28px;height:28px;border-radius:7px;flex-shrink:0;}
+/* SIDEBAR LOGO: 18px → 14px */
+.sidebar-logo{font-family:var(--font-display);font-size:14px;font-weight:800;color:var(--accent);letter-spacing:-0.4px;white-space:nowrap;overflow:hidden;transition:opacity var(--transition),width var(--transition);}
 .sidebar.collapsed .sidebar-logo{opacity:0;width:0;}.sidebar.collapsed .sidebar-brand{gap:0;}
-.collapse-btn{background:var(--surface2);border:1px solid var(--border);border-radius:8px;width:30px;height:30px;display:flex;align-items:center;justify-content:center;color:var(--text-muted);transition:all var(--transition);flex-shrink:0;}
+.collapse-btn{background:var(--surface2);border:1px solid var(--border);border-radius:7px;width:26px;height:26px;display:flex;align-items:center;justify-content:center;color:var(--text-muted);transition:all var(--transition);flex-shrink:0;}
 .collapse-btn:hover{background:var(--surface3);color:var(--text);}
-.sidebar-nav{flex:1;padding:10px 8px;overflow-y:auto;}
-.nav-section-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:var(--text-dim);padding:10px 10px 5px;white-space:nowrap;overflow:hidden;transition:opacity var(--transition);}
+.sidebar-nav{flex:1;padding:8px 6px;overflow-y:auto;}
+/* NAV LABEL: 10px → 9px */
+.nav-section-label{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:var(--text-dim);padding:8px 9px 4px;white-space:nowrap;overflow:hidden;transition:opacity var(--transition);}
 .sidebar.collapsed .nav-section-label{opacity:0;}
-.nav-item{display:flex;align-items:center;gap:11px;padding:10px 11px;border-radius:10px;color:var(--text-muted);font-size:14px;font-weight:500;transition:all var(--transition);cursor:pointer;position:relative;white-space:nowrap;margin-bottom:2px;}
-.nav-item i{width:18px;text-align:center;flex-shrink:0;font-size:14px;}
+/* NAV ITEM: 14px → 12px */
+.nav-item{display:flex;align-items:center;gap:9px;padding:8px 10px;border-radius:9px;color:var(--text-muted);font-size:12px;font-weight:500;transition:all var(--transition);cursor:pointer;position:relative;white-space:nowrap;margin-bottom:1px;}
+.nav-item i{width:15px;text-align:center;flex-shrink:0;font-size:12px;}
 .nav-item:hover{background:var(--surface2);color:var(--text);}
 .nav-item.active{background:rgba(108,99,255,0.12);color:var(--accent);font-weight:600;}
 .nav-item.active::before{content:'';position:absolute;left:0;top:6px;bottom:6px;width:3px;background:var(--accent);border-radius:0 3px 3px 0;}
 .nav-label{overflow:hidden;transition:opacity var(--transition),width var(--transition);}
 .sidebar.collapsed .nav-label{opacity:0;width:0;}
-.sidebar-footer{padding:12px 8px;border-top:1px solid var(--border);}
-.user-info{display:flex;align-items:center;gap:10px;padding:9px 11px;border-radius:10px;cursor:pointer;transition:background var(--transition);}
+.sidebar-footer{padding:10px 6px;border-top:1px solid var(--border);}
+.user-info{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:9px;cursor:pointer;transition:background var(--transition);}
 .user-info:hover{background:var(--surface2);}
-.user-avatar{width:34px;height:34px;border-radius:9px;background:var(--accent);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:13px;flex-shrink:0;}
-.user-details{overflow:hidden;}.user-name{font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.user-role{font-size:11px;color:var(--text-muted);}.sidebar.collapsed .user-details{display:none;}
+.user-avatar{width:30px;height:30px;border-radius:8px;background:var(--accent);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:11px;flex-shrink:0;}
+.user-details{overflow:hidden;}
+/* USER NAME: 13px → 11px */
+.user-name{font-size:11px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+/* USER ROLE: 11px → 10px */
+.user-role{font-size:10px;color:var(--text-muted);}.sidebar.collapsed .user-details{display:none;}
 .main-content{flex:1;display:flex;flex-direction:column;overflow:hidden;}
-.topnav{background:var(--nav-bg);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:0 22px;height:60px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:90;}
-.topnav-left{display:flex;align-items:center;gap:14px;}
-.page-title{font-family:var(--font-display);font-size:17px;font-weight:800;letter-spacing:-0.3px;}
-.breadcrumb{font-size:11px;color:var(--text-muted);margin-top:1px;}
-.topnav-right{display:flex;align-items:center;gap:8px;}
-.icon-btn{width:36px;height:36px;border-radius:9px;background:var(--surface2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--text-muted);transition:all var(--transition);cursor:pointer;}
+.topnav{background:var(--nav-bg);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:0 18px;height:52px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:90;}
+.topnav-left{display:flex;align-items:center;gap:12px;}
+/* PAGE TITLE: 17px → 13px */
+.page-title{font-family:var(--font-display);font-size:13px;font-weight:800;letter-spacing:-0.3px;}
+/* BREADCRUMB: 11px → 10px */
+.breadcrumb{font-size:10px;color:var(--text-muted);margin-top:1px;}
+.topnav-right{display:flex;align-items:center;gap:6px;}
+.icon-btn{width:32px;height:32px;border-radius:8px;background:var(--surface2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--text-muted);transition:all var(--transition);cursor:pointer;font-size:12px;}
 .icon-btn:hover{background:var(--surface3);color:var(--text);}
 .mobile-menu-btn{display:none;}
-.page-content{flex:1;overflow-y:auto;overflow-x:hidden;padding:24px;}
+.page-content{flex:1;overflow-y:auto;overflow-x:hidden;padding:18px;}
 .page{display:none;animation:fadeIn 0.28s ease;}.page.active{display:block;}
-.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:15px;margin-bottom:20px;}
-.stat-card{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:20px 18px 16px;position:relative;overflow:hidden;transition:transform var(--transition),box-shadow var(--transition);}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:16px;}
+.stat-card{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:16px 14px 12px;position:relative;overflow:hidden;transition:transform var(--transition),box-shadow var(--transition);}
 .stat-card:hover{transform:translateY(-2px);box-shadow:var(--shadow);}
 .stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
 .stat-card.sales::before{background:linear-gradient(90deg,#22c55e,#4ade80);}
@@ -107,94 +124,132 @@ select.form-control option{background:var(--surface2);}textarea.form-control{res
 .stat-card.labour::before{background:linear-gradient(90deg,#38bdf8,#7dd3fc);}
 .stat-card.trips::before{background:linear-gradient(90deg,#c084fc,#a855f7);}
 .stat-card.profit::before{background:linear-gradient(90deg,#6c63ff,#8b84ff);}
-.stat-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:17px;margin-bottom:12px;}
+.stat-icon{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:14px;margin-bottom:10px;}
 .stat-icon.green{background:rgba(34,197,94,0.12);color:var(--success);}
 .stat-icon.red{background:rgba(239,68,68,0.12);color:var(--danger);}
 .stat-icon.purple{background:rgba(108,99,255,0.12);color:var(--accent);}
 .stat-icon.yellow{background:rgba(245,158,11,0.12);color:var(--warning);}
 .stat-icon.blue{background:rgba(56,189,248,0.12);color:var(--info);}
 .stat-icon.violet{background:rgba(192,132,252,0.12);color:#c084fc;}
-.stat-value{font-family:var(--font-display);font-size:23px;font-weight:800;line-height:1;margin-bottom:4px;}
-.stat-label{font-size:11px;color:var(--text-muted);font-weight:600;text-transform:uppercase;letter-spacing:0.5px;}
-.card{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:20px;}
-.chart-card{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:20px;}
-.chart-card canvas{max-height:240px;}
-.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px;}
-.section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;}
-.section-title{font-family:var(--font-display);font-size:15px;font-weight:800;}
-.table-controls{display:flex;align-items:center;gap:9px;margin-bottom:13px;flex-wrap:wrap;}
-.search-box{position:relative;flex:1;min-width:180px;}
-.search-box i{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--text-muted);font-size:12px;}
-.search-box input{padding-left:34px;}
+/* STAT VALUE: 23px → 18px */
+.stat-value{font-family:var(--font-display);font-size:18px;font-weight:800;line-height:1;margin-bottom:3px;}
+/* STAT LABEL: 11px → 10px */
+.stat-label{font-size:10px;color:var(--text-muted);font-weight:600;text-transform:uppercase;letter-spacing:0.5px;}
+.card{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:16px;margin-bottom:16px;}
+.chart-card{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:16px;}
+.chart-card canvas{max-height:210px;}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
+.section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
+/* SECTION TITLE: 15px → 12px */
+.section-title{font-family:var(--font-display);font-size:12px;font-weight:800;}
+.table-controls{display:flex;align-items:center;gap:7px;margin-bottom:10px;flex-wrap:wrap;}
+.search-box{position:relative;flex:1;min-width:160px;}
+.search-box i{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--text-muted);font-size:11px;}
+.search-box input{padding-left:30px;}
 .table-wrap{overflow-x:auto;border-radius:var(--radius-sm);}
 table{width:100%;border-collapse:collapse;}
 thead tr{border-bottom:2px solid var(--border);}
-th{padding:11px 14px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;color:var(--text-muted);white-space:nowrap;}
-td{padding:12px 14px;font-size:13px;border-bottom:1px solid var(--border);}
+/* TH: 11px → 10px */
+th{padding:9px 12px;text-align:left;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;color:var(--text-muted);white-space:nowrap;}
+/* TD: 13px → 11px */
+td{padding:10px 12px;font-size:11px;border-bottom:1px solid var(--border);}
 tbody tr{transition:background var(--transition);}tbody tr:hover{background:var(--surface2);}tbody tr:last-child td{border-bottom:none;}
-.badge{display:inline-flex;align-items:center;padding:3px 9px;border-radius:99px;font-size:11px;font-weight:600;}
+/* BADGE: 11px → 10px */
+.badge{display:inline-flex;align-items:center;padding:2px 8px;border-radius:99px;font-size:10px;font-weight:600;}
 .badge-success{background:rgba(34,197,94,0.12);color:var(--success);}
 .badge-danger{background:rgba(239,68,68,0.12);color:var(--danger);}
 .badge-warning{background:rgba(245,158,11,0.12);color:var(--warning);}
 .badge-info{background:rgba(56,189,248,0.12);color:var(--info);}
 .badge-purple{background:rgba(108,99,255,0.12);color:var(--accent);}
-.action-btns{display:flex;gap:5px;}
-.empty-state{text-align:center;padding:40px 20px;color:var(--text-muted);}
-.empty-state i{font-size:36px;margin-bottom:10px;opacity:0.35;display:block;}
-.empty-state p{font-size:14px;}
-.pagination{display:flex;align-items:center;justify-content:space-between;padding-top:13px;flex-wrap:wrap;gap:8px;}
-.pagination-info{font-size:12px;color:var(--text-muted);}
-.pagination-btns{display:flex;gap:5px;}
-.pg-btn{width:30px;height:30px;border-radius:7px;background:var(--surface2);border:1px solid var(--border);color:var(--text);font-size:12px;display:flex;align-items:center;justify-content:center;transition:all var(--transition);cursor:pointer;}
+.action-btns{display:flex;gap:4px;}
+.empty-state{text-align:center;padding:32px 20px;color:var(--text-muted);}
+.empty-state i{font-size:30px;margin-bottom:8px;opacity:0.35;display:block;}
+/* EMPTY STATE P: 14px → 12px */
+.empty-state p{font-size:12px;}
+.pagination{display:flex;align-items:center;justify-content:space-between;padding-top:10px;flex-wrap:wrap;gap:6px;}
+/* PAGINATION INFO: 12px → 11px */
+.pagination-info{font-size:11px;color:var(--text-muted);}
+.pagination-btns{display:flex;gap:4px;}
+.pg-btn{width:26px;height:26px;border-radius:6px;background:var(--surface2);border:1px solid var(--border);color:var(--text);font-size:11px;display:flex;align-items:center;justify-content:center;transition:all var(--transition);cursor:pointer;}
 .pg-btn:hover,.pg-btn.active{background:var(--accent);color:#fff;border-color:var(--accent);}
-.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.55);backdrop-filter:blur(4px);z-index:500;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity var(--transition);}
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.55);backdrop-filter:blur(4px);z-index:500;display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;pointer-events:none;transition:opacity var(--transition);}
 .modal-overlay.open{opacity:1;pointer-events:all;}
-.modal{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:28px;width:100%;max-width:520px;max-height:90vh;overflow-y:auto;transform:scale(0.95) translateY(10px);transition:transform var(--transition);box-shadow:0 20px 60px rgba(0,0,0,0.38);}
+.modal{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:22px;width:100%;max-width:480px;max-height:90vh;overflow-y:auto;transform:scale(0.95) translateY(10px);transition:transform var(--transition);box-shadow:0 20px 60px rgba(0,0,0,0.38);}
 .modal-overlay.open .modal{transform:scale(1) translateY(0);}
-.modal-lg{max-width:740px;}.modal-sm{max-width:360px;}
-.modal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px;}
-.modal-title{font-family:var(--font-display);font-size:17px;font-weight:800;}
-.modal-close{width:32px;height:32px;border-radius:8px;background:var(--surface2);border:1px solid var(--border);color:var(--text-muted);display:flex;align-items:center;justify-content:center;transition:all var(--transition);cursor:pointer;}
+.modal-lg{max-width:700px;}.modal-sm{max-width:340px;}
+.modal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;}
+/* MODAL TITLE: 17px → 13px */
+.modal-title{font-family:var(--font-display);font-size:13px;font-weight:800;}
+.modal-close{width:28px;height:28px;border-radius:7px;background:var(--surface2);border:1px solid var(--border);color:var(--text-muted);display:flex;align-items:center;justify-content:center;transition:all var(--transition);cursor:pointer;font-size:11px;}
 .modal-close:hover{background:rgba(239,68,68,0.12);color:var(--danger);}
-.modal-footer{display:flex;justify-content:flex-end;gap:9px;margin-top:22px;padding-top:18px;border-top:1px solid var(--border);}
-#toast-container{position:fixed;bottom:22px;right:22px;z-index:9999;display:flex;flex-direction:column;gap:9px;}
-.toast{display:flex;align-items:center;gap:11px;padding:13px 16px;border-radius:12px;background:var(--surface);border:1px solid var(--border);box-shadow:0 8px 30px rgba(0,0,0,0.22);min-width:260px;max-width:340px;animation:slideInRight 0.32s ease,fadeOut 0.32s ease 3.68s forwards;}
-.toast i{font-size:16px;flex-shrink:0;}
+.modal-footer{display:flex;justify-content:flex-end;gap:7px;margin-top:18px;padding-top:14px;border-top:1px solid var(--border);}
+#toast-container{position:fixed;bottom:18px;right:18px;z-index:9999;display:flex;flex-direction:column;gap:7px;}
+.toast{display:flex;align-items:center;gap:9px;padding:10px 14px;border-radius:10px;background:var(--surface);border:1px solid var(--border);box-shadow:0 8px 30px rgba(0,0,0,0.22);min-width:220px;max-width:300px;animation:slideInRight 0.32s ease,fadeOut 0.32s ease 3.68s forwards;}
+.toast i{font-size:13px;flex-shrink:0;}
 .toast.success{border-color:rgba(34,197,94,0.3);}.toast.success i{color:var(--success);}
 .toast.error{border-color:rgba(239,68,68,0.3);}.toast.error i{color:var(--danger);}
 .toast.warning{border-color:rgba(245,158,11,0.3);}.toast.warning i{color:var(--warning);}
 .toast.info{border-color:rgba(56,189,248,0.3);}.toast.info i{color:var(--info);}
-.toast-msg{font-size:13px;line-height:1.4;}
-.invoice-preview{background:#fff;color:#1a1d2e;border-radius:10px;padding:36px;font-size:13px;line-height:1.6;}
-.invoice-preview h1{font-size:24px;font-weight:800;color:#6c63ff;margin-bottom:3px;}
-.invoice-header{display:flex;justify-content:space-between;margin-bottom:26px;}
-.invoice-meta{text-align:right;}
-.invoice-to{margin-bottom:18px;}
-.invoice-to h4{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#6b7094;margin-bottom:3px;}
-.invoice-table{width:100%;border-collapse:collapse;margin:18px 0;}
-.invoice-table th{background:#f0f2fb;padding:9px 12px;font-size:11px;text-align:left;}
-.invoice-table td{padding:9px 12px;border-bottom:1px solid #eef0fa;}
-.invoice-totals{text-align:right;margin-top:10px;}
-.invoice-total-row{display:flex;justify-content:flex-end;gap:50px;padding:5px 0;font-size:13px;}
-.invoice-total-row.grand{font-size:16px;font-weight:800;border-top:2px solid #1a1d2e;padding-top:9px;margin-top:3px;}
-.report-period-btns{display:flex;gap:6px;flex-wrap:wrap;}
-.period-btn{padding:7px 14px;border-radius:8px;border:1px solid var(--border);background:var(--surface2);color:var(--text-muted);font-size:13px;transition:all var(--transition);cursor:pointer;}
+/* TOAST MSG: 13px → 11px */
+.toast-msg{font-size:11px;line-height:1.4;}
+/* INVOICE PREVIEW - styled like Zabuka PDF */
+.invoice-preview{background:#fff;color:#1a1d2e;border-radius:10px;padding:28px;font-size:11px;line-height:1.6;}
+.invoice-preview h1{font-size:18px;font-weight:800;color:#1a6eb5;margin-bottom:2px;}
+.invoice-header{display:flex;justify-content:space-between;margin-bottom:20px;gap:20px;}
+.invoice-header-left{flex:1;}
+.invoice-header-right{text-align:right;min-width:160px;}
+.invoice-label-box{background:#1a6eb5;color:#fff;padding:6px 14px;border-radius:4px;font-size:13px;font-weight:800;letter-spacing:1px;margin-bottom:6px;display:inline-block;}
+.invoice-original-tag{border:1px solid #1a6eb5;color:#1a6eb5;padding:3px 10px;border-radius:4px;font-size:9px;font-weight:700;letter-spacing:1px;margin-left:6px;}
+.invoice-meta-row{font-size:10px;color:#555;padding:2px 0;}
+.invoice-meta-row strong{color:#1a1d2e;}
+.invoice-to{background:#e8f2fc;border-left:3px solid #1a6eb5;padding:10px 14px;margin-bottom:14px;border-radius:0 6px 6px 0;}
+.invoice-to-label{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#1a6eb5;margin-bottom:4px;}
+.invoice-to strong{font-size:12px;}
+.invoice-table{width:100%;border-collapse:collapse;margin:10px 0;}
+.invoice-table thead{background:#1a6eb5;color:#fff;}
+.invoice-table th{padding:7px 10px;font-size:9px;text-align:left;font-weight:700;letter-spacing:0.5px;}
+.invoice-table th:last-child{text-align:right;}
+.invoice-table td{padding:7px 10px;border-bottom:1px solid #dde8f5;font-size:10px;}
+.invoice-table td:last-child{text-align:right;font-weight:600;}
+.invoice-table tbody tr:nth-child(even){background:#f5f9ff;}
+.invoice-bottom{display:flex;justify-content:space-between;margin-top:14px;gap:20px;}
+.invoice-bank{flex:1;font-size:10px;color:#333;}
+.invoice-bank h4{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#1a6eb5;border-bottom:1px solid #cde;padding-bottom:3px;margin-bottom:6px;}
+.invoice-bank .bank-row{display:flex;gap:6px;padding:2px 0;}
+.invoice-bank .bank-row span:first-child{color:#777;min-width:80px;}
+.invoice-totals-box{min-width:210px;background:#f5f9ff;border:1px solid #cde;border-radius:6px;padding:10px 14px;}
+.inv-total-row{display:flex;justify-content:space-between;padding:3px 0;font-size:10px;color:#444;}
+.inv-total-row.grand{font-size:13px;font-weight:800;color:#1a1d2e;border-top:2px solid #1a6eb5;padding-top:7px;margin-top:5px;}
+.invoice-footer-words{background:#e8f2fc;padding:8px 14px;border-radius:6px;margin-top:12px;font-size:10px;}
+.invoice-footer-words strong{color:#1a6eb5;}
+.invoice-sig{text-align:right;margin-top:16px;font-size:10px;color:#555;}
+.invoice-tc{margin-top:10px;font-size:9px;color:#888;border-top:1px solid #eee;padding-top:8px;}
+.report-period-btns{display:flex;gap:5px;flex-wrap:wrap;}
+.period-btn{padding:5px 12px;border-radius:7px;border:1px solid var(--border);background:var(--surface2);color:var(--text-muted);font-size:11px;transition:all var(--transition);cursor:pointer;}
 .period-btn.active{background:var(--accent);color:#fff;border-color:var(--accent);}
-.user-row{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--border);}
+.user-row{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--border);}
 .user-row:last-child{border-bottom:none;}
-.user-row-avatar{width:38px;height:38px;border-radius:9px;background:var(--surface3);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--accent);font-size:15px;}
-.user-row-info{flex:1;}.user-row-name{font-size:13px;font-weight:600;}.user-row-email{font-size:11px;color:var(--text-muted);}
-.settings-section{margin-bottom:22px;}
-.settings-section h3{font-size:14px;font-weight:700;margin-bottom:13px;padding-bottom:9px;border-bottom:1px solid var(--border);}
-.settings-row{display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--border);}
+.user-row-avatar{width:34px;height:34px;border-radius:8px;background:var(--surface3);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--accent);font-size:13px;}
+.user-row-info{flex:1;}
+/* USER ROW NAME: 13px → 11px */
+.user-row-name{font-size:11px;font-weight:600;}
+/* USER ROW EMAIL: 11px → 10px */
+.user-row-email{font-size:10px;color:var(--text-muted);}
+.settings-section{margin-bottom:18px;}
+/* SETTINGS H3: 14px → 12px */
+.settings-section h3{font-size:12px;font-weight:700;margin-bottom:10px;padding-bottom:7px;border-bottom:1px solid var(--border);}
+.settings-row{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border);}
 .settings-row:last-child{border-bottom:none;}
-.settings-row-info h4{font-size:13px;font-weight:600;margin-bottom:1px;}.settings-row-info p{font-size:11px;color:var(--text-muted);}
-.toggle-switch{position:relative;width:42px;height:23px;}
+/* SETTINGS ROW H4: 13px → 11px */
+.settings-row-info h4{font-size:11px;font-weight:600;margin-bottom:1px;}
+/* SETTINGS ROW P: 11px → 10px */
+.settings-row-info p{font-size:10px;color:var(--text-muted);}
+.toggle-switch{position:relative;width:38px;height:21px;}
 .toggle-switch input{opacity:0;width:0;height:0;position:absolute;}
 .toggle-slider{position:absolute;inset:0;background:var(--border);border-radius:99px;cursor:pointer;transition:background var(--transition);}
-.toggle-slider::before{content:'';position:absolute;width:17px;height:17px;left:3px;top:3px;background:#fff;border-radius:50%;transition:transform var(--transition);}
+.toggle-slider::before{content:'';position:absolute;width:15px;height:15px;left:3px;top:3px;background:#fff;border-radius:50%;transition:transform var(--transition);}
 .toggle-switch input:checked+.toggle-slider{background:var(--accent);}
-.toggle-switch input:checked+.toggle-slider::before{transform:translateX(19px);}
+.toggle-switch input:checked+.toggle-slider::before{transform:translateX(17px);}
 .sidebar-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:99;}
 @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
@@ -203,8 +258,15 @@ tbody tr{transition:background var(--transition);}tbody tr:hover{background:var(
 @keyframes slideInRight{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:none}}
 @keyframes fadeOut{from{opacity:1}to{opacity:0}}
 @media print{.sidebar,.topnav,.table-controls,.action-btns,.modal-footer,.pagination,#toast-container,.no-print,.btn{display:none !important;}body{background:#fff;color:#000;}.page-content{padding:0;overflow:visible;}.card{border:1px solid #ddd;box-shadow:none;}}
-@media(max-width:768px){.sidebar{position:fixed;left:-260px;top:0;bottom:0;z-index:200;transition:left var(--transition);}.sidebar.mobile-open{left:0;}.sidebar-overlay{display:block;opacity:0;pointer-events:none;transition:opacity var(--transition);}.sidebar-overlay.visible{opacity:1;pointer-events:all;}.mobile-menu-btn{display:flex;}.page-content{padding:14px;}.stats-grid{grid-template-columns:1fr 1fr;}.grid-2{grid-template-columns:1fr;}.form-row{grid-template-columns:1fr;}.topnav{padding:0 14px;}}
-@media(max-width:480px){.stats-grid{grid-template-columns:1fr;}.auth-card{padding:28px 18px;}}
+@media(max-width:768px){
+  body{font-size:12px;}
+  .sidebar{position:fixed;left:-240px;top:0;bottom:0;z-index:200;transition:left var(--transition);}.sidebar.mobile-open{left:0;}
+  .sidebar-overlay{display:block;opacity:0;pointer-events:none;transition:opacity var(--transition);}.sidebar-overlay.visible{opacity:1;pointer-events:all;}
+  .mobile-menu-btn{display:flex;}.page-content{padding:10px;}.stats-grid{grid-template-columns:1fr 1fr;}
+  .grid-2{grid-template-columns:1fr;}.form-row{grid-template-columns:1fr;}.topnav{padding:0 10px;}
+  .stat-value{font-size:15px;}.page-title{font-size:12px;}.section-title{font-size:11px;}
+}
+@media(max-width:480px){.stats-grid{grid-template-columns:1fr;}.auth-card{padding:22px 14px;}}
 </style>
 
 <div class="loading-overlay" id="loading">
@@ -393,7 +455,7 @@ tbody tr{transition:background var(--transition);}tbody tr:hover{background:var(
             <button class="period-btn" onclick="setReportPeriod('year',this)">This Year</button>
             <button class="period-btn" onclick="setReportPeriod('all',this)">All Time</button>
           </div>
-          <div style="display:flex;gap:8px;" class="no-print">
+          <div style="display:flex;gap:6px;" class="no-print">
             <button class="btn btn-secondary btn-sm" onclick="window.print()"><i class="fas fa-print"></i> Print</button>
             <button class="btn btn-primary btn-sm" onclick="exportFullPDFReport()"><i class="fas fa-file-pdf"></i> PDF</button>
           </div>
@@ -403,7 +465,7 @@ tbody tr{transition:background var(--transition);}tbody tr:hover{background:var(
           <div class="chart-card"><div class="section-header"><div class="section-title">Revenue vs Costs</div></div><canvas id="chart-report-revenue"></canvas></div>
           <div class="chart-card"><div class="section-header"><div class="section-title">Cost Breakdown</div></div><canvas id="chart-report-costs"></canvas></div>
         </div>
-        <div class="card" style="margin-top:18px;"><div class="section-header"><div class="section-title">Profit &amp; Loss Statement</div></div><div id="pl-content"></div></div>
+        <div class="card" style="margin-top:14px;"><div class="section-header"><div class="section-title">Profit &amp; Loss Statement</div></div><div id="pl-content"></div></div>
       </div>
       <!-- ADMIN -->
       <div class="page" id="page-admin">
@@ -423,6 +485,10 @@ tbody tr{transition:background var(--transition);}tbody tr:hover{background:var(
               <div class="form-group"><label class="form-label">GST Number</label><input class="form-control" id="set-gst" placeholder="22AAAAA0000A1Z5"/></div>
               <div class="form-group"><label class="form-label">Phone</label><input class="form-control" id="set-phone" placeholder="+91 98765 43210"/></div>
               <div class="form-group"><label class="form-label">Address</label><textarea class="form-control" id="set-address" rows="2" placeholder="Business address"></textarea></div>
+              <div class="form-group"><label class="form-label">Bank Name</label><input class="form-control" id="set-bank-name" placeholder="State Bank of India"/></div>
+              <div class="form-group"><label class="form-label">Account Number</label><input class="form-control" id="set-bank-acc" placeholder="44477971824"/></div>
+              <div class="form-group"><label class="form-label">IFSC Code</label><input class="form-control" id="set-bank-ifsc" placeholder="SBIN0002303"/></div>
+              <div class="form-group"><label class="form-label">UPI ID</label><input class="form-control" id="set-upi" placeholder="youracc@sbi"/></div>
               <button class="btn btn-primary btn-sm" onclick="saveSettings()"><i class="fas fa-save"></i> Save Settings</button>
             </div>
           </div>
@@ -434,9 +500,9 @@ tbody tr{transition:background var(--transition);}tbody tr:hover{background:var(
             </div>
             <div class="settings-section">
               <h3>Install App (PWA)</h3>
-              <p style="color:var(--text-muted);font-size:13px;margin-bottom:12px;">Install BizPro on your phone or desktop for quick offline access.</p>
+              <p style="color:var(--text-muted);font-size:11px;margin-bottom:10px;">Install BizPro on your phone or desktop for quick offline access.</p>
               <button class="btn btn-secondary" id="install-btn" style="display:none;" onclick="installPWA()"><i class="fas fa-mobile-screen"></i> Install BizPro</button>
-              <p id="pwa-installed-msg" style="color:var(--success);font-size:13px;display:none;"><i class="fas fa-check-circle"></i> App already installed!</p>
+              <p id="pwa-installed-msg" style="color:var(--success);font-size:11px;display:none;"><i class="fas fa-check-circle"></i> App already installed!</p>
             </div>
             <div class="settings-section">
               <h3>Danger Zone</h3>
@@ -448,72 +514,87 @@ tbody tr{transition:background var(--transition);}tbody tr:hover{background:var(
     </div>
   </div>
 </div>
+
 <!-- MODALS -->
+<!-- SALE MODAL — FIX 2: step="any" on all number inputs to allow decimals like 88.6 -->
 <div class="modal-overlay" id="modal-sale"><div class="modal">
   <div class="modal-header"><div class="modal-title" id="sale-modal-title">Add Sale</div><button class="modal-close" onclick="closeModal('modal-sale')"><i class="fas fa-times"></i></button></div>
   <input type="hidden" id="sale-edit-id"/>
   <div class="form-row"><div class="form-group"><label class="form-label">Customer *</label><input class="form-control" id="sale-customer" placeholder="Customer name"/></div><div class="form-group"><label class="form-label">Product / Service *</label><input class="form-control" id="sale-product" placeholder="Product name"/></div></div>
-  <div class="form-row"><div class="form-group"><label class="form-label">Amount (₹) *</label><input class="form-control" type="number" id="sale-amount" placeholder="0.00"/></div><div class="form-group"><label class="form-label">Date *</label><input class="form-control" type="date" id="sale-date"/></div></div>
+  <div class="form-row"><div class="form-group"><label class="form-label">Amount (₹) *</label><input class="form-control" type="number" step="any" min="0" id="sale-amount" placeholder="0.00"/></div><div class="form-group"><label class="form-label">Date *</label><input class="form-control" type="date" id="sale-date"/></div></div>
   <div class="form-row"><div class="form-group"><label class="form-label">Payment Method</label><select class="form-control" id="sale-payment"><option>Cash</option><option>UPI</option><option>Bank Transfer</option><option>Cheque</option><option>Credit</option></select></div><div class="form-group"><label class="form-label">Status</label><select class="form-control" id="sale-status"><option>Paid</option><option>Pending</option><option>Partial</option></select></div></div>
   <div class="form-group"><label class="form-label">Notes</label><textarea class="form-control" id="sale-notes" rows="2" placeholder="Optional…"></textarea></div>
   <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-sale')">Cancel</button><button class="btn btn-primary" onclick="saveSale()"><i class="fas fa-save"></i> Save</button></div>
 </div></div>
+
 <div class="modal-overlay" id="modal-purchase"><div class="modal">
   <div class="modal-header"><div class="modal-title" id="purchase-modal-title">Add Purchase</div><button class="modal-close" onclick="closeModal('modal-purchase')"><i class="fas fa-times"></i></button></div>
   <input type="hidden" id="purchase-edit-id"/>
   <div class="form-row"><div class="form-group"><label class="form-label">Supplier *</label><input class="form-control" id="purchase-supplier" placeholder="Supplier name"/></div><div class="form-group"><label class="form-label">Item *</label><input class="form-control" id="purchase-item" placeholder="Item name"/></div></div>
-  <div class="form-row"><div class="form-group"><label class="form-label">Quantity</label><input class="form-control" type="number" id="purchase-qty" placeholder="1" oninput="calcPurchaseTotal()"/></div><div class="form-group"><label class="form-label">Unit Price (₹)</label><input class="form-control" type="number" id="purchase-price" placeholder="0.00" oninput="calcPurchaseTotal()"/></div></div>
-  <div class="form-row"><div class="form-group"><label class="form-label">Total Amount (₹) *</label><input class="form-control" type="number" id="purchase-amount" placeholder="0.00"/></div><div class="form-group"><label class="form-label">Date *</label><input class="form-control" type="date" id="purchase-date"/></div></div>
+  <!-- FIX 2: step="any" for decimal qty and price -->
+  <div class="form-row"><div class="form-group"><label class="form-label">Quantity</label><input class="form-control" type="number" step="any" min="0" id="purchase-qty" placeholder="1" oninput="calcPurchaseTotal()"/></div><div class="form-group"><label class="form-label">Unit Price (₹)</label><input class="form-control" type="number" step="any" min="0" id="purchase-price" placeholder="0.00" oninput="calcPurchaseTotal()"/></div></div>
+  <div class="form-row"><div class="form-group"><label class="form-label">Total Amount (₹) *</label><input class="form-control" type="number" step="any" min="0" id="purchase-amount" placeholder="0.00"/></div><div class="form-group"><label class="form-label">Date *</label><input class="form-control" type="date" id="purchase-date"/></div></div>
   <div class="form-group"><label class="form-label">Notes</label><textarea class="form-control" id="purchase-notes" rows="2" placeholder="Optional…"></textarea></div>
   <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-purchase')">Cancel</button><button class="btn btn-primary" onclick="savePurchase()"><i class="fas fa-save"></i> Save</button></div>
 </div></div>
+
 <div class="modal-overlay" id="modal-expense"><div class="modal">
   <div class="modal-header"><div class="modal-title" id="expense-modal-title">Add Expense</div><button class="modal-close" onclick="closeModal('modal-expense')"><i class="fas fa-times"></i></button></div>
   <input type="hidden" id="expense-edit-id"/>
   <div class="form-row"><div class="form-group"><label class="form-label">Description *</label><input class="form-control" id="expense-desc" placeholder="Description"/></div><div class="form-group"><label class="form-label">Category *</label><select class="form-control" id="expense-category"><option>Rent</option><option>Utilities</option><option>Marketing</option><option>Maintenance</option><option>Office</option><option>Transport</option><option>Food</option><option>Other</option></select></div></div>
-  <div class="form-row"><div class="form-group"><label class="form-label">Amount (₹) *</label><input class="form-control" type="number" id="expense-amount" placeholder="0.00"/></div><div class="form-group"><label class="form-label">Date *</label><input class="form-control" type="date" id="expense-date"/></div></div>
+  <!-- FIX 2: step="any" -->
+  <div class="form-row"><div class="form-group"><label class="form-label">Amount (₹) *</label><input class="form-control" type="number" step="any" min="0" id="expense-amount" placeholder="0.00"/></div><div class="form-group"><label class="form-label">Date *</label><input class="form-control" type="date" id="expense-date"/></div></div>
   <div class="form-group"><label class="form-label">Notes</label><textarea class="form-control" id="expense-notes" rows="2" placeholder="Optional…"></textarea></div>
   <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-expense')">Cancel</button><button class="btn btn-primary" onclick="saveExpense()"><i class="fas fa-save"></i> Save</button></div>
 </div></div>
+
 <div class="modal-overlay" id="modal-vehicle"><div class="modal">
   <div class="modal-header"><div class="modal-title">Add Vehicle Trip</div><button class="modal-close" onclick="closeModal('modal-vehicle')"><i class="fas fa-times"></i></button></div>
   <input type="hidden" id="vehicle-edit-id"/>
   <div class="form-row"><div class="form-group"><label class="form-label">Vehicle No. *</label><input class="form-control" id="vehicle-number" placeholder="MH01 AB 1234"/></div><div class="form-group"><label class="form-label">Driver Name *</label><input class="form-control" id="vehicle-driver" placeholder="Driver name"/></div></div>
   <div class="form-row"><div class="form-group"><label class="form-label">From *</label><input class="form-control" id="vehicle-from" placeholder="Origin"/></div><div class="form-group"><label class="form-label">To *</label><input class="form-control" id="vehicle-to" placeholder="Destination"/></div></div>
-  <div class="form-row"><div class="form-group"><label class="form-label">Distance (km)</label><input class="form-control" type="number" id="vehicle-distance" placeholder="0"/></div><div class="form-group"><label class="form-label">Fuel Cost (₹)</label><input class="form-control" type="number" id="vehicle-fuel" placeholder="0.00"/></div></div>
+  <!-- FIX 2: step="any" for km and fuel -->
+  <div class="form-row"><div class="form-group"><label class="form-label">Distance (km)</label><input class="form-control" type="number" step="any" min="0" id="vehicle-distance" placeholder="0"/></div><div class="form-group"><label class="form-label">Fuel Cost (₹)</label><input class="form-control" type="number" step="any" min="0" id="vehicle-fuel" placeholder="0.00"/></div></div>
   <div class="form-row"><div class="form-group"><label class="form-label">Purpose</label><input class="form-control" id="vehicle-purpose" placeholder="Delivery, Pickup…"/></div><div class="form-group"><label class="form-label">Date *</label><input class="form-control" type="date" id="vehicle-date"/></div></div>
   <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-vehicle')">Cancel</button><button class="btn btn-primary" onclick="saveVehicle()"><i class="fas fa-save"></i> Save</button></div>
 </div></div>
+
 <div class="modal-overlay" id="modal-labour"><div class="modal">
   <div class="modal-header"><div class="modal-title">Add Labour Entry</div><button class="modal-close" onclick="closeModal('modal-labour')"><i class="fas fa-times"></i></button></div>
   <input type="hidden" id="labour-edit-id"/>
   <div class="form-row"><div class="form-group"><label class="form-label">Worker Name *</label><input class="form-control" id="labour-name" placeholder="Worker name"/></div><div class="form-group"><label class="form-label">Work Type *</label><input class="form-control" id="labour-type" placeholder="Construction, Packing…"/></div></div>
-  <div class="form-row"><div class="form-group"><label class="form-label">Days *</label><input class="form-control" type="number" id="labour-days" placeholder="1" oninput="calcLabourTotal()"/></div><div class="form-group"><label class="form-label">Daily Rate (₹) *</label><input class="form-control" type="number" id="labour-rate" placeholder="500" oninput="calcLabourTotal()"/></div></div>
+  <!-- FIX 2: step="any" for days and rate (e.g. 2.5 days) -->
+  <div class="form-row"><div class="form-group"><label class="form-label">Days *</label><input class="form-control" type="number" step="any" min="0" id="labour-days" placeholder="1" oninput="calcLabourTotal()"/></div><div class="form-group"><label class="form-label">Daily Rate (₹) *</label><input class="form-control" type="number" step="any" min="0" id="labour-rate" placeholder="500" oninput="calcLabourTotal()"/></div></div>
   <div class="form-row"><div class="form-group"><label class="form-label">Total (₹)</label><input class="form-control" id="labour-total" readonly placeholder="Auto-calc"/></div><div class="form-group"><label class="form-label">Date *</label><input class="form-control" type="date" id="labour-date"/></div></div>
   <div class="form-group"><label class="form-label">Notes</label><textarea class="form-control" id="labour-notes" rows="2" placeholder="Task details…"></textarea></div>
   <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-labour')">Cancel</button><button class="btn btn-primary" onclick="saveLabour()"><i class="fas fa-save"></i> Save</button></div>
 </div></div>
+
 <div class="modal-overlay" id="modal-invoice"><div class="modal modal-lg">
   <div class="modal-header"><div class="modal-title">Create GST Invoice</div><button class="modal-close" onclick="closeModal('modal-invoice')"><i class="fas fa-times"></i></button></div>
   <div class="form-row"><div class="form-group"><label class="form-label">Invoice No.</label><input class="form-control" id="inv-number" placeholder="INV-001"/></div><div class="form-group"><label class="form-label">Date</label><input class="form-control" type="date" id="inv-date"/></div></div>
-  <div class="form-row"><div class="form-group"><label class="form-label">Customer Name *</label><input class="form-control" id="inv-customer" placeholder="Customer name"/></div><div class="form-group"><label class="form-label">Customer Address</label><input class="form-control" id="inv-address" placeholder="Address"/></div></div>
-  <div style="margin-bottom:14px;"><div class="section-title" style="margin-bottom:10px;font-size:13px;">Line Items</div><div id="invoice-items-container"></div><button class="btn btn-secondary btn-sm" onclick="addInvoiceItem()"><i class="fas fa-plus"></i> Add Item</button></div>
-  <div class="form-row"><div class="form-group"><label class="form-label">GST %</label><input class="form-control" type="number" id="inv-gst" placeholder="18" oninput="calcInvoiceTotal()"/></div><div class="form-group"><label class="form-label">Grand Total</label><input class="form-control" id="inv-total" readonly placeholder="₹0.00"/></div></div>
-  <div class="form-group"><label class="form-label">Notes / Terms</label><textarea class="form-control" id="inv-notes" rows="2" placeholder="Payment within 30 days. Thank you!"></textarea></div>
+  <div class="form-row"><div class="form-group"><label class="form-label">Customer Name *</label><input class="form-control" id="inv-customer" placeholder="Customer name"/></div><div class="form-group"><label class="form-label">Customer GSTIN</label><input class="form-control" id="inv-cust-gstin" placeholder="01AABCB1562A1ZP"/></div></div>
+  <div class="form-row"><div class="form-group"><label class="form-label">Customer Address</label><input class="form-control" id="inv-address" placeholder="Address"/></div><div class="form-group"><label class="form-label">Place of Supply</label><input class="form-control" id="inv-supply" placeholder="Jammu &amp; Kashmir"/></div></div>
+  <div class="form-group"><label class="form-label">Due Date</label><input class="form-control" type="date" id="inv-due-date"/></div>
+  <div style="margin-bottom:12px;"><div class="section-title" style="margin-bottom:8px;font-size:11px;">Line Items</div><div id="invoice-items-container"></div><button class="btn btn-secondary btn-sm" onclick="addInvoiceItem()"><i class="fas fa-plus"></i> Add Item</button></div>
+  <!-- FIX 2: step="any" for GST field too -->
+  <div class="form-row"><div class="form-group"><label class="form-label">GST %</label><input class="form-control" type="number" step="any" min="0" id="inv-gst" placeholder="5" oninput="calcInvoiceTotal()"/></div><div class="form-group"><label class="form-label">Grand Total</label><input class="form-control" id="inv-total" readonly placeholder="₹0.00"/></div></div>
+  <div class="form-group"><label class="form-label">Notes / Terms</label><textarea class="form-control" id="inv-notes" rows="2" placeholder="All disputes are subject to local jurisdiction only"></textarea></div>
   <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-invoice')">Cancel</button><button class="btn btn-secondary" onclick="previewInvoice()"><i class="fas fa-eye"></i> Preview</button><button class="btn btn-primary" onclick="saveInvoice()"><i class="fas fa-save"></i> Save &amp; Download</button></div>
 </div></div>
+
 <div class="modal-overlay" id="modal-invoice-preview"><div class="modal modal-lg">
   <div class="modal-header"><div class="modal-title">Invoice Preview</div><button class="modal-close" onclick="closeModal('modal-invoice-preview')"><i class="fas fa-times"></i></button></div>
   <div id="invoice-preview-content"></div>
   <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-invoice-preview')">Close</button><button class="btn btn-secondary" onclick="printInvoice()"><i class="fas fa-print"></i> Print</button><button class="btn btn-primary" onclick="downloadInvoicePDF()"><i class="fas fa-download"></i> Download PDF</button></div>
 </div></div>
+
 <div class="modal-overlay" id="modal-confirm"><div class="modal modal-sm">
   <div class="modal-header"><div class="modal-title">Confirm Delete</div><button class="modal-close" onclick="closeModal('modal-confirm')"><i class="fas fa-times"></i></button></div>
-  <p style="color:var(--text-muted);font-size:14px;">Are you sure? This cannot be undone.</p>
+  <p style="color:var(--text-muted);font-size:12px;">Are you sure? This cannot be undone.</p>
   <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-confirm')">Cancel</button><button class="btn btn-danger" id="confirm-delete-btn"><i class="fas fa-trash"></i> Delete</button></div>
 </div></div>
 <div id="toast-container"></div>
-
 
 <script type="module">
 import{initializeApp}from'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
@@ -569,6 +650,9 @@ function initApp(){
   var av=document.getElementById('sidebar-avatar');if(av)av.textContent=name[0].toUpperCase();
   if(p.role==='admin'){document.getElementById('admin-nav').style.display='flex';document.getElementById('admin-nav-label').style.display='block';}
   ['sale-date','purchase-date','expense-date','vehicle-date','labour-date','inv-date'].forEach(id=>{var e=document.getElementById(id);if(e)e.value=tod();});
+  // set due date 15 days from now by default
+  var dd=new Date();dd.setDate(dd.getDate()+15);var dds=dd.toISOString().split('T')[0];
+  sv('inv-due-date',dds);
   var cnt=parseInt(localStorage.getItem(IK)||'0')+1;
   sv('inv-number','INV-'+String(cnt).padStart(3,'0'));
   _invItems=[];addInvItem();addInvItem();
@@ -585,7 +669,7 @@ async function handleLogin(){
   var em=gv('login-email'),pw=gv('login-password');
   if(!em||!pw){showToast('Enter email and password','error');return;}
   var btn=document.getElementById('login-btn');
-  btn.innerHTML='<div class="spinner" style="width:16px;height:16px;border-width:2px;"></div> Signing in…';btn.disabled=true;
+  btn.innerHTML='<div class="spinner" style="width:14px;height:14px;border-width:2px;"></div> Signing in…';btn.disabled=true;
   try{await window._fb.signInWithEmailAndPassword(window._auth,em,pw);showToast('Welcome back! 👋','success');}
   catch(e){showToast(authErr(e.code),'error');btn.innerHTML='<i class="fas fa-arrow-right-to-bracket"></i> Sign In';btn.disabled=false;}
 }
@@ -594,10 +678,10 @@ async function handleSignup(){
   if(!name||!em||!pw){showToast('Fill required fields','error');return;}
   if(pw.length<6){showToast('Password must be 6+ characters','error');return;}
   var btn=document.getElementById('signup-btn');
-  btn.innerHTML='<div class="spinner" style="width:16px;height:16px;border-width:2px;"></div> Creating…';btn.disabled=true;
+  btn.innerHTML='<div class="spinner" style="width:14px;height:14px;border-width:2px;"></div> Creating…';btn.disabled=true;
   try{
     var cr=await window._fb.createUserWithEmailAndPassword(window._auth,em,pw);
-    await window._fb.setDoc(window._fb.doc(window._db,'users',cr.user.uid),{name,businessName:biz,email:em,role,phone:'',gst:'',address:'',createdAt:window._fb.serverTimestamp()});
+    await window._fb.setDoc(window._fb.doc(window._db,'users',cr.user.uid),{name,businessName:biz,email:em,role,phone:'',gst:'',address:'',bankName:'',bankAcc:'',bankIfsc:'',upi:'',createdAt:window._fb.serverTimestamp()});
     showToast('Account created! Welcome 🎉','success');
   }catch(e){showToast(authErr(e.code),'error');btn.innerHTML='<i class="fas fa-user-plus"></i> Create Account';btn.disabled=false;}
 }
@@ -720,96 +804,377 @@ async function saveLabour(){
 function openNewInvoiceModal(){
   _invItems=[];addInvItem();addInvItem();
   var cnt=parseInt(localStorage.getItem(IK)||'0')+1;
-  sv('inv-number','INV-'+String(cnt).padStart(3,'0'));sv('inv-date',tod());
-  ['inv-customer','inv-address','inv-total','inv-notes'].forEach(i=>sv(i,''));sv('inv-gst','18');
+  sv('inv-number','INV-'+String(cnt).padStart(3,'0'));
+  sv('inv-date',tod());
+  var dd=new Date();dd.setDate(dd.getDate()+15);sv('inv-due-date',dd.toISOString().split('T')[0]);
+  ['inv-customer','inv-cust-gstin','inv-address','inv-supply','inv-total','inv-notes'].forEach(i=>sv(i,''));
+  sv('inv-gst','5');
   calcInvoiceTotal();openModal('modal-invoice');
 }
+
+// FIX 2: invoice line items also get step="any"
 function addInvItem(){_invItems.push({id:Date.now()+Math.random(),name:'',qty:1,price:0});renderInvItems();}
 function removeInvItem(id){_invItems=_invItems.filter(i=>i.id!==id);renderInvItems();calcInvoiceTotal();}
 function renderInvItems(){
   document.getElementById('invoice-items-container').innerHTML=_invItems.map((item,idx)=>`
-    <div style="display:grid;grid-template-columns:2fr 65px 95px 95px 34px;gap:7px;align-items:center;margin-bottom:8px;">
-      <input class="form-control" placeholder="Item description" value="${item.name||''}" oninput="_invItems[${idx}].name=this.value"/>
-      <input class="form-control" type="number" placeholder="Qty" value="${item.qty||1}" oninput="_invItems[${idx}].qty=parseFloat(this.value)||0;calcInvoiceTotal()"/>
-      <input class="form-control" type="number" placeholder="Rate ₹" value="${item.price||''}" oninput="_invItems[${idx}].price=parseFloat(this.value)||0;calcInvoiceTotal()"/>
+    <div style="display:grid;grid-template-columns:2fr 70px 100px 100px 32px;gap:6px;align-items:center;margin-bottom:6px;">
+      <input class="form-control" placeholder="Item / Service description" value="${item.name||''}" oninput="_invItems[${idx}].name=this.value"/>
+      <input class="form-control" type="number" step="any" min="0" placeholder="Qty" value="${item.qty||1}" oninput="_invItems[${idx}].qty=parseFloat(this.value)||0;calcInvoiceTotal()"/>
+      <input class="form-control" type="number" step="any" min="0" placeholder="Rate ₹" value="${item.price||''}" oninput="_invItems[${idx}].price=parseFloat(this.value)||0;calcInvoiceTotal()"/>
       <input class="form-control" value="${fmt((item.qty||0)*(item.price||0))}" readonly style="color:var(--success);font-weight:600;"/>
-      <button class="btn btn-danger btn-icon btn-sm" onclick="removeInvItem(${item.id})" style="padding:8px;"><i class="fas fa-trash"></i></button>
+      <button class="btn btn-danger btn-icon btn-sm" onclick="removeInvItem(${item.id})" style="padding:6px;"><i class="fas fa-trash"></i></button>
     </div>`).join('');
 }
 function calcInvoiceTotal(){
   var sub=_invItems.reduce((s,i)=>s+((i.qty||0)*(i.price||0)),0);
-  sv('inv-total',fmt(sub*(1+(parseFloat(gv('inv-gst'))||0)/100)));
+  var gp=parseFloat(gv('inv-gst'))||0;
+  sv('inv-total',fmt(sub*(1+gp/100)));
 }
 function previewInvoice(){
   var sub=_invItems.reduce((s,i)=>s+((i.qty||0)*(i.price||0)),0);
   var gp=parseFloat(gv('inv-gst'))||0,ga=sub*gp/100;
-  _invData={customer:gv('inv-customer'),invNum:gv('inv-number'),invDate:gv('inv-date'),subtotal:sub,gstPct:gp,gstAmt:ga,total:sub+ga,notes:gv('inv-notes'),items:[..._invItems],profile:window._up||{},address:gv('inv-address')};
+  _invData={
+    customer:gv('inv-customer'),custGstin:gv('inv-cust-gstin'),
+    invNum:gv('inv-number'),invDate:gv('inv-date'),dueDate:gv('inv-due-date'),
+    supply:gv('inv-supply'),subtotal:sub,gstPct:gp,gstAmt:ga,total:sub+ga,
+    notes:gv('inv-notes'),items:[..._invItems],profile:window._up||{},address:gv('inv-address')
+  };
   document.getElementById('invoice-preview-content').innerHTML=buildInvHTML(_invData);
   openModal('modal-invoice-preview');
 }
+
+// ===================== FIX 3: ZABUKA-STYLE INVOICE HTML =====================
 function buildInvHTML(d){
   var p=d.profile||{};
+  var bizName=p.businessName||'My Business';
+  var cgstAmt=(d.gstAmt/2).toFixed(2);
+  var sgstAmt=(d.gstAmt/2).toFixed(2);
+  var halfGst=(d.gstPct/2).toFixed(1);
+  var taxableAmt=d.subtotal;
+  var grandTotal=d.total;
+  var roundOff=Math.round(grandTotal)-grandTotal;
+  var finalTotal=Math.round(grandTotal);
+
+  // Number to words (simple Indian system)
+  function toWords(n){
+    n=Math.round(n);
+    var a=['','One','Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten','Eleven','Twelve','Thirteen','Fourteen','Fifteen','Sixteen','Seventeen','Eighteen','Nineteen'];
+    var b=['','','Twenty','Thirty','Forty','Fifty','Sixty','Seventy','Eighty','Ninety'];
+    if(n===0)return'Zero';
+    function h(n){if(n<20)return a[n];if(n<100)return b[Math.floor(n/10)]+(n%10?' '+a[n%10]:'');return a[Math.floor(n/100)]+' Hundred'+(n%100?' '+h(n%100):'');}
+    var s='';
+    if(n>=10000000){s+=h(Math.floor(n/10000000))+' Crore ';n%=10000000;}
+    if(n>=100000){s+=h(Math.floor(n/100000))+' Lakh ';n%=100000;}
+    if(n>=1000){s+=h(Math.floor(n/1000))+' Thousand ';n%=1000;}
+    if(n>0)s+=h(n);
+    return s.trim()+' Rupees';
+  }
+
+  var bankSection = (p.bankName||p.bankAcc||p.bankIfsc) ? `
+    <div class="invoice-bank">
+      <h4>Bank Details</h4>
+      ${p.bankName?`<div class="bank-row"><span>Bank:</span><span>${p.bankName}</span></div>`:''}
+      ${p.bankIfsc?`<div class="bank-row"><span>IFSC Code:</span><span>${p.bankIfsc}</span></div>`:''}
+      ${p.bankAcc?`<div class="bank-row"><span>Account No:</span><span>${p.bankAcc}</span></div>`:''}
+      ${p.upi?`<div class="bank-row"><span>UPI ID:</span><span>${p.upi}</span></div>`:''}
+    </div>` : '<div></div>';
+
   return `<div class="invoice-preview" id="printable-invoice">
     <div class="invoice-header">
-      <div><h1>${p.businessName||'My Business'}</h1>${p.address?`<div style="color:#6b7094;font-size:12px;">${p.address}</div>`:''} ${p.gst?`<div style="color:#6b7094;font-size:12px;">GSTIN: ${p.gst}</div>`:''} ${p.phone?`<div style="color:#6b7094;font-size:12px;">Ph: ${p.phone}</div>`:''}</div>
-      <div class="invoice-meta"><div style="font-size:20px;font-weight:800;color:#6c63ff;letter-spacing:2px;">INVOICE</div><div style="margin-top:6px;">No: <strong>${d.invNum}</strong></div><div>Date: <strong>${d.invDate}</strong></div></div>
+      <div class="invoice-header-left">
+        <h1>${bizName}</h1>
+        ${p.address?`<div style="color:#555;font-size:10px;margin-top:3px;max-width:240px;">${p.address}</div>`:''}
+        ${p.phone?`<div style="color:#555;font-size:10px;">Mobile: ${p.phone}</div>`:''}
+        ${p.email||''?`<div style="color:#555;font-size:10px;">Email: ${p.email||''}</div>`:''}
+        ${p.gst?`<div style="font-size:10px;margin-top:2px;"><strong>GSTIN:</strong> ${p.gst}</div>`:''}
+      </div>
+      <div class="invoice-header-right">
+        <div style="display:flex;align-items:center;gap:6px;justify-content:flex-end;margin-bottom:8px;">
+          <span class="invoice-label-box">TAX INVOICE</span>
+          <span class="invoice-original-tag">ORIGINAL FOR RECIPIENT</span>
+        </div>
+        <div class="invoice-meta-row">Invoice No. <strong>${d.invNum}</strong></div>
+        <div class="invoice-meta-row">Invoice Date <strong>${d.invDate}</strong></div>
+        ${d.dueDate?`<div class="invoice-meta-row">Due Date <strong>${d.dueDate}</strong></div>`:''}
+      </div>
     </div>
-    <div class="invoice-to"><h4>Bill To</h4><strong>${d.customer}</strong>${d.address?`<div style="color:#6b7094;">${d.address}</div>`:''}</div>
-    <table class="invoice-table"><thead><tr><th>#</th><th>Description</th><th>Qty</th><th>Rate</th><th style="text-align:right;">Amount</th></tr></thead><tbody>
-      ${d.items.map((it,i)=>`<tr><td>${i+1}</td><td>${it.name||'-'}</td><td>${it.qty}</td><td>₹${parseFloat(it.price||0).toFixed(2)}</td><td style="text-align:right;">₹${((it.qty||0)*(it.price||0)).toFixed(2)}</td></tr>`).join('')}
-    </tbody></table>
-    <div class="invoice-totals">
-      <div class="invoice-total-row"><span>Subtotal</span><span>₹${d.subtotal.toFixed(2)}</span></div>
-      <div class="invoice-total-row"><span>GST @ ${d.gstPct}%</span><span>₹${d.gstAmt.toFixed(2)}</span></div>
-      <div class="invoice-total-row grand"><span>Grand Total</span><span>₹${d.total.toFixed(2)}</span></div>
+
+    <div class="invoice-to">
+      <div class="invoice-to-label">Bill To</div>
+      <strong>${d.customer}</strong>
+      ${d.address?`<div style="color:#333;font-size:10px;">${d.address}</div>`:''}
+      ${d.custGstin?`<div style="font-size:10px;">GSTIN: ${d.custGstin}</div>`:''}
+      ${d.supply?`<div style="font-size:10px;">Place of Supply: ${d.supply}</div>`:''}
     </div>
-    ${d.notes?`<div style="margin-top:18px;padding-top:12px;border-top:1px solid #eef0fa;color:#6b7094;font-size:12px;">${d.notes}</div>`:''}
-    <div style="margin-top:20px;font-size:10px;color:#a8adc8;text-align:center;">Generated by BizPro</div>
+
+    <table class="invoice-table">
+      <thead>
+        <tr>
+          <th style="width:40px;">S.NO.</th>
+          <th>SERVICES</th>
+          <th style="width:80px;">QTY.</th>
+          <th style="width:70px;">RATE</th>
+          <th style="width:80px;">TAX</th>
+          <th style="width:90px;text-align:right;">AMOUNT</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${d.items.map((it,i)=>`<tr>
+          <td>${i+1}</td>
+          <td>${it.name||'-'}</td>
+          <td>${parseFloat(it.qty||0).toLocaleString('en-IN')}</td>
+          <td>₹${parseFloat(it.price||0).toLocaleString('en-IN',{minimumFractionDigits:2})}</td>
+          <td>${d.gstPct}%</td>
+          <td>₹${((it.qty||0)*(it.price||0)).toLocaleString('en-IN',{minimumFractionDigits:2})}</td>
+        </tr>`).join('')}
+        <tr style="background:#eef5ff;font-weight:700;">
+          <td colspan="2"><strong>SUBTOTAL</strong></td>
+          <td></td>
+          <td>₹${taxableAmt.toLocaleString('en-IN',{minimumFractionDigits:2})}</td>
+          <td></td>
+          <td>₹${taxableAmt.toLocaleString('en-IN',{minimumFractionDigits:2})}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="invoice-bottom">
+      ${bankSection}
+      <div class="invoice-totals-box">
+        <div class="inv-total-row"><span>Taxable Amount</span><span>₹${taxableAmt.toLocaleString('en-IN',{minimumFractionDigits:2})}</span></div>
+        <div class="inv-total-row"><span>CGST @${halfGst}%</span><span>₹${cgstAmt}</span></div>
+        <div class="inv-total-row"><span>SGST @${halfGst}%</span><span>₹${sgstAmt}</span></div>
+        ${Math.abs(roundOff)>0.001?`<div class="inv-total-row"><span>Round Off</span><span>${roundOff>0?'+':'-'}₹${Math.abs(roundOff).toFixed(2)}</span></div>`:''}
+        <div class="inv-total-row" style="font-weight:700;border-top:1px solid #bbd;padding-top:5px;margin-top:4px;"><span>Total Amount</span><span>₹${finalTotal.toLocaleString('en-IN')}</span></div>
+        <div class="inv-total-row" style="color:#777;"><span>Received Amount</span><span>₹0</span></div>
+        <div class="inv-total-row grand"><span>Amount Due</span><span>₹${finalTotal.toLocaleString('en-IN')}</span></div>
+      </div>
+    </div>
+
+    <div class="invoice-footer-words">
+      <strong>Total Amount (in words):</strong> ${toWords(finalTotal)} Only
+    </div>
+
+    ${d.notes?`<div class="invoice-tc"><strong>TERMS AND CONDITIONS</strong><br/>${d.notes}</div>`:''}
+
+    <div class="invoice-sig">
+      <div style="margin-bottom:40px;"></div>
+      <div style="border-top:1px solid #ccc;padding-top:6px;">Authorised Signature for ${bizName}</div>
+    </div>
+    <div style="text-align:center;margin-top:12px;font-size:9px;color:#bbb;">Generated by BizPro</div>
   </div>`;
 }
+
 async function saveInvoice(){
   if(!gv('inv-customer').trim()){showToast('Enter customer name','error');return;}
   var sub=_invItems.reduce((s,i)=>s+((i.qty||0)*(i.price||0)),0);
   var gp=parseFloat(gv('inv-gst'))||0;
   var cnt=parseInt(localStorage.getItem(IK)||'0')+1;
   localStorage.setItem(IK,cnt);
-  await saveRec('invoices',{invNumber:gv('inv-number'),customer:gv('inv-customer'),address:gv('inv-address'),items:JSON.stringify(_invItems),subtotal:sub,gstPct:gp,total:sub*(1+gp/100),date:gv('inv-date'),notes:gv('inv-notes')});
+  await saveRec('invoices',{
+    invNumber:gv('inv-number'),customer:gv('inv-customer'),custGstin:gv('inv-cust-gstin'),
+    address:gv('inv-address'),supply:gv('inv-supply'),dueDate:gv('inv-due-date'),
+    items:JSON.stringify(_invItems),subtotal:sub,gstPct:gp,total:sub*(1+gp/100),
+    date:gv('inv-date'),notes:gv('inv-notes')
+  });
   previewInvoice();downloadInvoicePDF();closeModal('modal-invoice');
 }
 function viewInvoice(id){
   var r=_data.invoices.find(i=>i.id===id);if(!r)return;
-  _invData={customer:r.customer,invNum:r.invNumber,invDate:r.date,subtotal:r.subtotal,gstPct:r.gstPct,gstAmt:r.subtotal*r.gstPct/100,total:r.total,notes:r.notes,items:JSON.parse(r.items||'[]'),profile:window._up||{},address:r.address};
+  _invData={
+    customer:r.customer,custGstin:r.custGstin||'',invNum:r.invNumber,invDate:r.date,dueDate:r.dueDate||'',
+    supply:r.supply||'',subtotal:r.subtotal,gstPct:r.gstPct,gstAmt:r.subtotal*r.gstPct/100,
+    total:r.total,notes:r.notes,items:JSON.parse(r.items||'[]'),profile:window._up||{},address:r.address
+  };
   document.getElementById('invoice-preview-content').innerHTML=buildInvHTML(_invData);
   openModal('modal-invoice-preview');
 }
 function printInvoice(){
   var w=window.open('','_blank');
   var c=document.getElementById('printable-invoice');
-  w.document.write(`<!DOCTYPE html><html><head><title>Invoice ${_invData?.invNum||''}</title><style>body{font-family:sans-serif;padding:36px;color:#1a1d2e;}h1{color:#6c63ff;font-size:24px;}table{width:100%;border-collapse:collapse;}th{background:#f0f2fb;padding:9px 12px;font-size:11px;text-align:left;}td{padding:9px 12px;border-bottom:1px solid #eef0fa;}</style></head><body>${c.outerHTML}</body></html>`);
+  w.document.write(`<!DOCTYPE html><html><head><title>Invoice ${_invData?.invNum||''}</title>
+  <style>
+    body{font-family:Arial,sans-serif;padding:28px;color:#1a1d2e;font-size:11px;}
+    h1{color:#1a6eb5;font-size:18px;margin-bottom:2px;}
+    .invoice-label-box{background:#1a6eb5;color:#fff;padding:5px 12px;border-radius:3px;font-size:12px;font-weight:800;letter-spacing:1px;display:inline-block;}
+    .invoice-original-tag{border:1px solid #1a6eb5;color:#1a6eb5;padding:2px 8px;border-radius:3px;font-size:9px;font-weight:700;margin-left:4px;}
+    .invoice-header{display:flex;justify-content:space-between;margin-bottom:18px;}
+    .invoice-to{background:#e8f2fc;border-left:3px solid #1a6eb5;padding:8px 12px;margin-bottom:12px;border-radius:0 4px 4px 0;}
+    table{width:100%;border-collapse:collapse;}
+    thead{background:#1a6eb5;color:#fff;}
+    th{padding:6px 8px;font-size:9px;text-align:left;font-weight:700;}
+    th:last-child{text-align:right;}
+    td{padding:6px 8px;border-bottom:1px solid #dde8f5;font-size:10px;}
+    td:last-child{text-align:right;font-weight:600;}
+    tr:nth-child(even){background:#f5f9ff;}
+    .invoice-bottom{display:flex;justify-content:space-between;margin-top:12px;}
+    .invoice-totals-box{background:#f5f9ff;border:1px solid #cde;border-radius:4px;padding:8px 12px;min-width:200px;}
+    .inv-total-row{display:flex;justify-content:space-between;padding:2px 0;font-size:10px;}
+    .invoice-footer-words{background:#e8f2fc;padding:7px 12px;border-radius:4px;margin-top:10px;font-size:10px;}
+    .bank-row{display:flex;gap:6px;font-size:10px;padding:1px 0;}
+    .bank-row span:first-child{color:#777;min-width:75px;}
+  </style>
+  </head><body>${c.outerHTML}</body></html>`);
   w.document.close();w.focus();w.print();
 }
+
+// ===================== FIX 3: Zabuka-style PDF download =====================
 function downloadInvoicePDF(){
   if(!_invData){previewInvoice();return;}
-  var {jsPDF}=window.jspdf;var pdf=new jsPDF({orientation:'portrait',unit:'mm',format:'a4'});
+  var {jsPDF}=window.jspdf;
+  var pdf=new jsPDF({orientation:'portrait',unit:'mm',format:'a4'});
   var d=_invData,p=d.profile||{};
-  pdf.setFontSize(20);pdf.setTextColor(108,99,255);pdf.text(p.businessName||'My Business',20,22);
-  pdf.setFontSize(9);pdf.setTextColor(120,120,120);
-  if(p.address)pdf.text(p.address,20,29);
-  if(p.gst)pdf.text('GSTIN: '+p.gst,20,34);
-  if(p.phone)pdf.text('Ph: '+p.phone,20,39);
-  pdf.setFontSize(18);pdf.setTextColor(50,50,50);pdf.text('INVOICE',150,22);
-  pdf.setFontSize(9);pdf.setTextColor(100,100,100);pdf.text('No: '+d.invNum,150,29);pdf.text('Date: '+d.invDate,150,34);
-  pdf.setFontSize(11);pdf.setTextColor(0,0,0);pdf.text('Bill To:',20,50);
-  pdf.setFont(undefined,'bold');pdf.text(d.customer,20,56);pdf.setFont(undefined,'normal');
-  if(d.address){pdf.setFontSize(9);pdf.setTextColor(100,100,100);pdf.text(d.address,20,62);}
-  pdf.autoTable({startY:68,head:[['#','Description','Qty','Rate','Amount']],body:d.items.map((it,i)=>[i+1,it.name||'-',it.qty,'₹'+parseFloat(it.price||0).toFixed(2),'₹'+((it.qty||0)*(it.price||0)).toFixed(2)]),styles:{fontSize:10},headStyles:{fillColor:[108,99,255]},alternateRowStyles:{fillColor:[248,248,255]}});
-  var y=pdf.lastAutoTable.finalY+8;
-  pdf.setFontSize(10);pdf.setTextColor(80,80,80);
-  pdf.text('Subtotal: ₹'+d.subtotal.toFixed(2),140,y);
-  pdf.text('GST ('+d.gstPct+'%): ₹'+d.gstAmt.toFixed(2),140,y+6);
-  pdf.setFontSize(13);pdf.setFont(undefined,'bold');pdf.setTextColor(0,0,0);
-  pdf.text('Total: ₹'+d.total.toFixed(2),140,y+15);
-  if(d.notes){pdf.setFont(undefined,'normal');pdf.setFontSize(9);pdf.setTextColor(120,120,120);pdf.text(d.notes,20,y+25);}
+  var bizName=p.businessName||'My Business';
+  var pageW=210,lm=14,rm=14,cw=pageW-lm-rm;
+  var y=14;
+
+  // Header strip - business name left, TAX INVOICE right
+  pdf.setFillColor(26,110,181);pdf.rect(lm,y,cw,1,'F');y+=3;
+  pdf.setFontSize(14);pdf.setFont(undefined,'bold');pdf.setTextColor(26,110,181);
+  pdf.text(bizName,lm,y+5);
+  pdf.setFontSize(10);pdf.setTextColor(255,255,255);
+  pdf.setFillColor(26,110,181);pdf.rect(pageW-rm-52,y-1,52,8,'F');
+  pdf.text('TAX INVOICE',pageW-rm-50,y+5);
+  y+=10;
+
+  // Business info left
+  pdf.setFontSize(7.5);pdf.setFont(undefined,'normal');pdf.setTextColor(80,80,80);
+  var blines=[];
+  if(p.address)blines.push(p.address);
+  if(p.phone)blines.push('Mobile: '+p.phone);
+  if(p.email)blines.push('Email: '+p.email);
+  if(p.gst)blines.push('GSTIN: '+p.gst);
+  blines.forEach((l,i)=>{pdf.text(l,lm,y+i*4);});
+
+  // Invoice meta right
+  pdf.setFontSize(7.5);pdf.setTextColor(80,80,80);
+  var mr=pageW-rm;
+  pdf.text('Invoice No.',mr-55,y);pdf.setFont(undefined,'bold');pdf.setTextColor(20,20,20);pdf.text(d.invNum,mr,y,'right');
+  pdf.setFont(undefined,'normal');pdf.setTextColor(80,80,80);
+  pdf.text('Invoice Date',mr-55,y+5);pdf.setFont(undefined,'bold');pdf.setTextColor(20,20,20);pdf.text(d.invDate,mr,y+5,'right');
+  if(d.dueDate){pdf.setFont(undefined,'normal');pdf.setTextColor(80,80,80);pdf.text('Due Date',mr-55,y+10);pdf.setFont(undefined,'bold');pdf.setTextColor(20,20,20);pdf.text(d.dueDate,mr,y+10,'right');}
+  pdf.setFont(undefined,'normal');
+  y+=Math.max(blines.length*4,15)+4;
+
+  // Divider
+  pdf.setDrawColor(26,110,181);pdf.setLineWidth(0.4);pdf.line(lm,y,pageW-rm,y);y+=3;
+
+  // Bill To
+  pdf.setFillColor(232,242,252);pdf.rect(lm,y,cw,d.custGstin?18:14,'F');
+  pdf.setDrawColor(26,110,181);pdf.setLineWidth(1);pdf.line(lm,y,lm,y+(d.custGstin?18:14));
+  pdf.setLineWidth(0.2);
+  pdf.setFontSize(6.5);pdf.setFont(undefined,'bold');pdf.setTextColor(26,110,181);pdf.text('BILL TO',lm+3,y+4);
+  pdf.setFontSize(9);pdf.setTextColor(20,20,20);pdf.text(d.customer,lm+3,y+9);
+  pdf.setFontSize(7);pdf.setFont(undefined,'normal');pdf.setTextColor(70,70,70);
+  if(d.address)pdf.text(d.address,lm+3,y+13);
+  if(d.custGstin){pdf.text('GSTIN: '+d.custGstin,lm+3,y+(d.address?17:13));}
+  if(d.supply){pdf.text('Place of Supply: '+d.supply,lm+3+(d.custGstin?60:0),y+(d.address?17:13));}
+  y+=(d.custGstin?18:14)+4;
+
+  // Items table
+  pdf.autoTable({
+    startY:y,
+    head:[['S.NO.','SERVICES','QTY.','RATE','TAX','AMOUNT']],
+    body:d.items.map((it,i)=>[
+      i+1,
+      it.name||'-',
+      parseFloat(it.qty||0).toLocaleString('en-IN'),
+      '₹'+parseFloat(it.price||0).toLocaleString('en-IN',{minimumFractionDigits:2}),
+      d.gstPct+'%',
+      '₹'+((it.qty||0)*(it.price||0)).toLocaleString('en-IN',{minimumFractionDigits:2})
+    ]),
+    foot:[['','SUBTOTAL',d.items.reduce((s,i)=>s+(parseFloat(i.qty)||0),0).toLocaleString('en-IN'),
+           '₹'+d.subtotal.toLocaleString('en-IN',{minimumFractionDigits:2}),'',
+           '₹'+d.subtotal.toLocaleString('en-IN',{minimumFractionDigits:2})]],
+    styles:{fontSize:8,cellPadding:3},
+    headStyles:{fillColor:[26,110,181],fontSize:7.5,fontStyle:'bold'},
+    footStyles:{fillColor:[220,235,250],fontStyle:'bold',fontSize:8},
+    columnStyles:{0:{cellWidth:12},2:{cellWidth:20},3:{cellWidth:28},4:{cellWidth:18},5:{cellWidth:32,halign:'right'}},
+    alternateRowStyles:{fillColor:[245,249,255]},
+    margin:{left:lm,right:rm}
+  });
+  y=pdf.lastAutoTable.finalY+5;
+
+  // Bottom section: bank details left, totals right
+  var halfGst=(d.gstPct/2).toFixed(1);
+  var cgst=(d.gstAmt/2);var sgst=(d.gstAmt/2);
+  var finalTotal=Math.round(d.total);
+  var roundOff=finalTotal-d.total;
+
+  // Bank details
+  if(p.bankName||p.bankAcc||p.bankIfsc){
+    pdf.setFontSize(7);pdf.setFont(undefined,'bold');pdf.setTextColor(26,110,181);
+    pdf.text('BANK DETAILS',lm,y+4);
+    pdf.setDrawColor(26,110,181);pdf.setLineWidth(0.3);pdf.line(lm,y+5,lm+45,y+5);
+    pdf.setFont(undefined,'normal');pdf.setTextColor(60,60,60);
+    var bl=y+9;
+    if(p.bankName){pdf.text('Name:',lm,bl);pdf.setTextColor(20,20,20);pdf.text(bizName,lm+18,bl);pdf.setTextColor(60,60,60);bl+=4;}
+    if(p.bankIfsc){pdf.text('IFSC Code:',lm,bl);pdf.setTextColor(20,20,20);pdf.text(p.bankIfsc,lm+18,bl);pdf.setTextColor(60,60,60);bl+=4;}
+    if(p.bankAcc){pdf.text('Account No:',lm,bl);pdf.setTextColor(20,20,20);pdf.text(p.bankAcc,lm+18,bl);pdf.setTextColor(60,60,60);bl+=4;}
+    if(p.bankName){pdf.text('Bank:',lm,bl);pdf.setTextColor(20,20,20);pdf.text(p.bankName,lm+18,bl);pdf.setTextColor(60,60,60);}
+    if(p.upi){bl+=4;pdf.text('UPI ID:',lm,bl);pdf.setTextColor(20,20,20);pdf.text(p.upi,lm+18,bl);}
+  }
+
+  // Totals box (right side)
+  var tbx=pageW-rm-65,tby=y,tbw=65;
+  pdf.setFillColor(245,249,255);pdf.setDrawColor(180,200,220);pdf.setLineWidth(0.3);
+  pdf.rect(tbx,tby,tbw,32+(Math.abs(roundOff)>0.001?4:0),'FD');
+  pdf.setFontSize(7.5);pdf.setFont(undefined,'normal');pdf.setTextColor(70,70,70);
+  var tr=tby+5;
+  var addTRow=(label,val,bold)=>{
+    if(bold){pdf.setFont(undefined,'bold');pdf.setTextColor(20,20,20);}
+    else{pdf.setFont(undefined,'normal');pdf.setTextColor(70,70,70);}
+    pdf.text(label,tbx+3,tr);pdf.text(val,tbx+tbw-3,tr,'right');tr+=5;
+  };
+  addTRow('Taxable Amount','₹'+d.subtotal.toLocaleString('en-IN',{minimumFractionDigits:2}));
+  addTRow('CGST @'+halfGst+'%','₹'+cgst.toFixed(2));
+  addTRow('SGST @'+halfGst+'%','₹'+sgst.toFixed(2));
+  if(Math.abs(roundOff)>0.001)addTRow('Round Off',(roundOff>0?'+':'-')+'₹'+Math.abs(roundOff).toFixed(2));
+  pdf.setDrawColor(26,110,181);pdf.setLineWidth(0.4);pdf.line(tbx+2,tr,tbx+tbw-2,tr);tr+=3;
+  addTRow('Total Amount','₹'+finalTotal.toLocaleString('en-IN'),true);
+  tr+=1;pdf.setFont(undefined,'normal');pdf.setTextColor(120,120,120);
+  pdf.text('Received Amount',tbx+3,tr);pdf.text('₹0',tbx+tbw-3,tr,'right');tr+=5;
+  pdf.setFillColor(26,110,181);pdf.rect(tbx,tr-4,tbw,7,'F');
+  pdf.setFont(undefined,'bold');pdf.setTextColor(255,255,255);pdf.setFontSize(8);
+  pdf.text('Amount Due',tbx+3,tr+0.5);pdf.text('₹'+finalTotal.toLocaleString('en-IN'),tbx+tbw-3,tr+0.5,'right');
+
+  y=Math.max(tby+32+8,pdf.lastAutoTable?pdf.lastAutoTable.finalY+8:y+8);
+
+  // Amount in words
+  function toWords(n){
+    n=Math.round(n);
+    var a=['','One','Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten','Eleven','Twelve','Thirteen','Fourteen','Fifteen','Sixteen','Seventeen','Eighteen','Nineteen'];
+    var b=['','','Twenty','Thirty','Forty','Fifty','Sixty','Seventy','Eighty','Ninety'];
+    if(n===0)return'Zero';
+    function h(n){if(n<20)return a[n];if(n<100)return b[Math.floor(n/10)]+(n%10?' '+a[n%10]:'');return a[Math.floor(n/100)]+' Hundred'+(n%100?' '+h(n%100):'');}
+    var s='';
+    if(n>=10000000){s+=h(Math.floor(n/10000000))+' Crore ';n%=10000000;}
+    if(n>=100000){s+=h(Math.floor(n/100000))+' Lakh ';n%=100000;}
+    if(n>=1000){s+=h(Math.floor(n/1000))+' Thousand ';n%=1000;}
+    if(n>0)s+=h(n);
+    return s.trim()+' Rupees';
+  }
+  pdf.setFillColor(232,242,252);pdf.rect(lm,y,cw,9,'F');
+  pdf.setFontSize(7.5);pdf.setFont(undefined,'bold');pdf.setTextColor(26,110,181);
+  pdf.text('Total Amount (in words):',lm+3,y+5);
+  pdf.setFont(undefined,'normal');pdf.setTextColor(20,20,20);
+  pdf.text(toWords(finalTotal)+' Only',lm+47,y+5);
+  y+=13;
+
+  // Terms
+  if(d.notes){
+    pdf.setFontSize(7);pdf.setFont(undefined,'bold');pdf.setTextColor(60,60,60);pdf.text('TERMS AND CONDITIONS',lm,y);
+    pdf.setFont(undefined,'normal');pdf.text(d.notes,lm,y+4);y+=10;
+  }
+
+  // Signature
+  pdf.setFontSize(7.5);pdf.setTextColor(80,80,80);
+  pdf.text('Authorised Signature for '+bizName,pageW-rm,y+8,'right');
+  pdf.setDrawColor(150,150,150);pdf.setLineWidth(0.3);pdf.line(pageW-rm-55,y+9,pageW-rm,y+9);
+
+  // Footer line
+  pdf.setDrawColor(26,110,181);pdf.setLineWidth(0.5);pdf.line(lm,285,pageW-rm,285);
+  pdf.setFontSize(7);pdf.setTextColor(150,150,150);pdf.text('Generated by BizPro',pageW/2,288,'center');
+
   pdf.save('Invoice-'+d.invNum+'.pdf');
   showToast('Invoice PDF downloaded!','success');
 }
@@ -842,9 +1207,9 @@ function renderTable(type,search,period){
       var n=start+i+1;
       if(type==='sales')return`<tr><td>${n}</td><td>${r.customer}</td><td>${r.product}</td><td>${fmt(r.amount)}</td><td>${r.date}</td><td>${r.payment||'Cash'}</td><td><span class="badge badge-${r.status==='Paid'?'success':r.status==='Pending'?'warning':'info'}">${r.status}</span></td><td class="action-btns no-print"><button class="btn btn-secondary btn-sm btn-icon" onclick="editSale('${r.id}')"><i class="fas fa-pen"></i></button><button class="btn btn-danger btn-sm btn-icon" onclick="confirmDelete('sales','${r.id}')"><i class="fas fa-trash"></i></button></td></tr>`;
       if(type==='purchases')return`<tr><td>${n}</td><td>${r.supplier}</td><td>${r.item}</td><td>${r.qty||1}</td><td>${fmt(r.amount)}</td><td>${r.date}</td><td class="action-btns no-print"><button class="btn btn-secondary btn-sm btn-icon" onclick="editPurchase('${r.id}')"><i class="fas fa-pen"></i></button><button class="btn btn-danger btn-sm btn-icon" onclick="confirmDelete('purchases','${r.id}')"><i class="fas fa-trash"></i></button></td></tr>`;
-      if(type==='expenses')return`<tr><td>${n}</td><td>${r.desc}</td><td><span class="badge badge-purple">${r.category}</span></td><td>${fmt(r.amount)}</td><td>${r.date}</td><td style="font-size:12px;color:var(--text-muted);">${r.notes||'-'}</td><td class="action-btns no-print"><button class="btn btn-secondary btn-sm btn-icon" onclick="editExpense('${r.id}')"><i class="fas fa-pen"></i></button><button class="btn btn-danger btn-sm btn-icon" onclick="confirmDelete('expenses','${r.id}')"><i class="fas fa-trash"></i></button></td></tr>`;
+      if(type==='expenses')return`<tr><td>${n}</td><td>${r.desc}</td><td><span class="badge badge-purple">${r.category}</span></td><td>${fmt(r.amount)}</td><td>${r.date}</td><td style="font-size:10px;color:var(--text-muted);">${r.notes||'-'}</td><td class="action-btns no-print"><button class="btn btn-secondary btn-sm btn-icon" onclick="editExpense('${r.id}')"><i class="fas fa-pen"></i></button><button class="btn btn-danger btn-sm btn-icon" onclick="confirmDelete('expenses','${r.id}')"><i class="fas fa-trash"></i></button></td></tr>`;
       if(type==='vehicles')return`<tr><td>${n}</td><td>${r.vehicleNum}</td><td>${r.driver}</td><td>${r.from}</td><td>${r.to}</td><td>${r.distance} km</td><td>${fmt(r.fuelCost)}</td><td>${r.purpose||'-'}</td><td>${r.date}</td><td class="action-btns no-print"><button class="btn btn-danger btn-sm btn-icon" onclick="confirmDelete('vehicles','${r.id}')"><i class="fas fa-trash"></i></button></td></tr>`;
-      if(type==='labour')return`<tr><td>${n}</td><td>${r.name}</td><td>${r.type}</td><td>${r.days}</td><td>${fmt(r.rate)}</td><td style="font-weight:600;color:var(--success);">${fmt(r.total)}</td><td>${r.date}</td><td style="font-size:12px;color:var(--text-muted);">${r.notes||'-'}</td><td class="action-btns no-print"><button class="btn btn-danger btn-sm btn-icon" onclick="confirmDelete('labour','${r.id}')"><i class="fas fa-trash"></i></button></td></tr>`;
+      if(type==='labour')return`<tr><td>${n}</td><td>${r.name}</td><td>${r.type}</td><td>${r.days}</td><td>${fmt(r.rate)}</td><td style="font-weight:600;color:var(--success);">${fmt(r.total)}</td><td>${r.date}</td><td style="font-size:10px;color:var(--text-muted);">${r.notes||'-'}</td><td class="action-btns no-print"><button class="btn btn-danger btn-sm btn-icon" onclick="confirmDelete('labour','${r.id}')"><i class="fas fa-trash"></i></button></td></tr>`;
       if(type==='invoices')return`<tr><td>${n}</td><td><strong>${r.invNumber}</strong></td><td>${r.customer}</td><td>${fmt(r.subtotal)}</td><td>${r.gstPct}%</td><td style="font-weight:700;color:var(--success);">${fmt(r.total)}</td><td>${r.date}</td><td class="action-btns no-print"><button class="btn btn-secondary btn-sm btn-icon" onclick="viewInvoice('${r.id}')"><i class="fas fa-eye"></i></button><button class="btn btn-danger btn-sm btn-icon" onclick="confirmDelete('invoices','${r.id}')"><i class="fas fa-trash"></i></button></td></tr>`;
       return'';
     }).join('');
@@ -866,7 +1231,7 @@ function renderDashboard(){
   se('stat-labour',fmt(tL));se('stat-trips',_data.vehicles.length);
   var pe=document.getElementById('stat-profit');if(pe){pe.textContent=fmt(net);pe.style.color=net>=0?'var(--success)':'var(--danger)';}
   var rl=document.getElementById('recent-sales-list');
-  if(rl){var rs=_data.sales.slice(0,5);rl.innerHTML=rs.length?rs.map(r=>`<div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);"><div><div style="font-size:13px;font-weight:600;">${r.customer}</div><div style="font-size:11px;color:var(--text-muted);">${r.product} · ${r.date}</div></div><span style="font-weight:700;color:var(--success);">${fmt(r.amount)}</span></div>`).join(''):'<div class="empty-state"><i class="fas fa-receipt"></i><p>No sales yet</p></div>';}
+  if(rl){var rs=_data.sales.slice(0,5);rl.innerHTML=rs.length?rs.map(r=>`<div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border);"><div><div style="font-size:11px;font-weight:600;">${r.customer}</div><div style="font-size:10px;color:var(--text-muted);">${r.product} · ${r.date}</div></div><span style="font-weight:700;color:var(--success);font-size:11px;">${fmt(r.amount)}</span></div>`).join(''):'<div class="empty-state"><i class="fas fa-receipt"></i><p>No sales yet</p></div>';}
   drawCharts();
 }
 
@@ -877,17 +1242,17 @@ function drawCharts(){
   var ms=new Array(12).fill(0),me=new Array(12).fill(0);
   _data.sales.forEach(r=>{if(r.date)ms[new Date(r.date).getMonth()]+=parseFloat(r.amount||0);});
   _data.expenses.forEach(r=>{if(r.date)me[new Date(r.date).getMonth()]+=parseFloat(r.amount||0);});
-  var co={responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:tc}}},scales:{x:{grid:{color:gc},ticks:{color:tc}},y:{grid:{color:gc},ticks:{color:tc}}}};
+  var co={responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:tc,font:{size:10}}}},scales:{x:{grid:{color:gc},ticks:{color:tc,font:{size:9}}},y:{grid:{color:gc},ticks:{color:tc,font:{size:9}}}}};
   if(_charts.se)_charts.se.destroy();
   var c1=document.getElementById('chart-sales-expenses');
-  if(c1)_charts.se=new Chart(c1,{type:'bar',data:{labels:mo,datasets:[{label:'Sales',data:ms,backgroundColor:'rgba(34,197,94,0.7)',borderRadius:5},{label:'Expenses',data:me,backgroundColor:'rgba(239,68,68,0.7)',borderRadius:5}]},options:co});
+  if(c1)_charts.se=new Chart(c1,{type:'bar',data:{labels:mo,datasets:[{label:'Sales',data:ms,backgroundColor:'rgba(34,197,94,0.7)',borderRadius:4},{label:'Expenses',data:me,backgroundColor:'rgba(239,68,68,0.7)',borderRadius:4}]},options:co});
   if(_charts.mp)_charts.mp.destroy();
   var c2=document.getElementById('chart-monthly-profit');
-  if(c2)_charts.mp=new Chart(c2,{type:'line',data:{labels:mo,datasets:[{label:'Net Profit',data:mo.map((_,i)=>ms[i]-me[i]),borderColor:'#6c63ff',backgroundColor:'rgba(108,99,255,0.1)',fill:true,tension:0.4,pointBackgroundColor:'#6c63ff',pointRadius:4}]},options:co});
+  if(c2)_charts.mp=new Chart(c2,{type:'line',data:{labels:mo,datasets:[{label:'Net Profit',data:mo.map((_,i)=>ms[i]-me[i]),borderColor:'#6c63ff',backgroundColor:'rgba(108,99,255,0.1)',fill:true,tension:0.4,pointBackgroundColor:'#6c63ff',pointRadius:3}]},options:co});
   if(_charts.ec)_charts.ec.destroy();
   var cd={};_data.expenses.forEach(r=>{cd[r.category]=(cd[r.category]||0)+parseFloat(r.amount||0);});
   var c3=document.getElementById('chart-expenses-cat');
-  if(c3&&Object.keys(cd).length)_charts.ec=new Chart(c3,{type:'doughnut',data:{labels:Object.keys(cd),datasets:[{data:Object.values(cd),backgroundColor:['#6c63ff','#22c55e','#ef4444','#f59e0b','#38bdf8','#c084fc','#fb923c'],borderWidth:0}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:tc},position:'bottom'}}}});
+  if(c3&&Object.keys(cd).length)_charts.ec=new Chart(c3,{type:'doughnut',data:{labels:Object.keys(cd),datasets:[{data:Object.values(cd),backgroundColor:['#6c63ff','#22c55e','#ef4444','#f59e0b','#38bdf8','#c084fc','#fb923c'],borderWidth:0}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:tc,font:{size:10}},position:'bottom'}}}});
 }
 
 function setReportPeriod(p,btn){
@@ -921,29 +1286,30 @@ function renderReports(){
     <div class="stat-card profit"><div class="stat-icon purple"><i class="fas fa-sack-dollar"></i></div><div class="stat-value" style="color:${net>=0?'var(--success)':'var(--danger)'};">${fmt(net)}</div><div class="stat-label">Net Profit</div></div>`;
   document.getElementById('pl-content').innerHTML=`<table style="width:100%"><thead><tr><th>Category</th><th style="text-align:right;">Amount</th></tr></thead><tbody>
     <tr style="background:rgba(34,197,94,0.05)"><td colspan="2"><strong>INCOME</strong></td></tr>
-    <tr><td style="padding-left:20px;">Sales Revenue</td><td style="text-align:right;color:var(--success);">${fmt(tS)}</td></tr>
+    <tr><td style="padding-left:18px;">Sales Revenue</td><td style="text-align:right;color:var(--success);">${fmt(tS)}</td></tr>
     <tr style="border-bottom:2px solid var(--border)"><td><strong>Total Income</strong></td><td style="text-align:right;font-weight:700;">${fmt(tS)}</td></tr>
     <tr style="background:rgba(239,68,68,0.05)"><td colspan="2"><strong>EXPENSES</strong></td></tr>
-    <tr><td style="padding-left:20px;">Purchases / COGS</td><td style="text-align:right;color:var(--danger);">(${fmt(tP)})</td></tr>
-    <tr><td style="padding-left:20px;">Operating Expenses</td><td style="text-align:right;color:var(--danger);">(${fmt(tE)})</td></tr>
-    <tr><td style="padding-left:20px;">Labour Cost</td><td style="text-align:right;color:var(--danger);">(${fmt(tL)})</td></tr>
-    <tr><td style="padding-left:20px;">Vehicle / Fuel</td><td style="text-align:right;color:var(--danger);">(${fmt(tF)})</td></tr>
+    <tr><td style="padding-left:18px;">Purchases / COGS</td><td style="text-align:right;color:var(--danger);">(${fmt(tP)})</td></tr>
+    <tr><td style="padding-left:18px;">Operating Expenses</td><td style="text-align:right;color:var(--danger);">(${fmt(tE)})</td></tr>
+    <tr><td style="padding-left:18px;">Labour Cost</td><td style="text-align:right;color:var(--danger);">(${fmt(tL)})</td></tr>
+    <tr><td style="padding-left:18px;">Vehicle / Fuel</td><td style="text-align:right;color:var(--danger);">(${fmt(tF)})</td></tr>
     <tr style="border-bottom:2px solid var(--border)"><td><strong>Total Expenses</strong></td><td style="text-align:right;font-weight:700;">(${fmt(tC)})</td></tr>
-    <tr style="font-size:16px;font-weight:800;"><td>NET PROFIT / LOSS</td><td style="text-align:right;color:${net>=0?'var(--success)':'var(--danger)'};">${fmt(net)}</td></tr>
+    <tr style="font-size:14px;font-weight:800;"><td>NET PROFIT / LOSS</td><td style="text-align:right;color:${net>=0?'var(--success)':'var(--danger)'};">${fmt(net)}</td></tr>
   </tbody></table>`;
   var dk=document.documentElement.getAttribute('data-theme')==='dark',tc=dk?'#7b80a0':'#6b7094';
+  var co2={responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{ticks:{color:tc,font:{size:9}}},x:{ticks:{color:tc,font:{size:9}}}}};
   if(_charts.rr)_charts.rr.destroy();
   var cr=document.getElementById('chart-report-revenue');
-  if(cr)_charts.rr=new Chart(cr,{type:'bar',data:{labels:['Revenue','Total Costs','Net Profit'],datasets:[{data:[tS,tC,Math.max(0,net)],backgroundColor:['rgba(34,197,94,0.75)','rgba(239,68,68,0.75)','rgba(108,99,255,0.75)'],borderRadius:8}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{ticks:{color:tc}},x:{ticks:{color:tc}}}}});
+  if(cr)_charts.rr=new Chart(cr,{type:'bar',data:{labels:['Revenue','Total Costs','Net Profit'],datasets:[{data:[tS,tC,Math.max(0,net)],backgroundColor:['rgba(34,197,94,0.75)','rgba(239,68,68,0.75)','rgba(108,99,255,0.75)'],borderRadius:6}]},options:co2});
   if(_charts.rc)_charts.rc.destroy();
   var cc=document.getElementById('chart-report-costs');
-  if(cc&&tC>0)_charts.rc=new Chart(cc,{type:'pie',data:{labels:['Purchases','Expenses','Labour','Fuel'],datasets:[{data:[tP,tE,tL,tF],backgroundColor:['#f59e0b','#ef4444','#38bdf8','#c084fc'],borderWidth:0}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:tc},position:'bottom'}}}});
+  if(cc&&tC>0)_charts.rc=new Chart(cc,{type:'pie',data:{labels:['Purchases','Expenses','Labour','Fuel'],datasets:[{data:[tP,tE,tL,tF],backgroundColor:['#f59e0b','#ef4444','#38bdf8','#c084fc'],borderWidth:0}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:tc,font:{size:10}},position:'bottom'}}}});
 }
 
 function exportFullPDFReport(){
   var {jsPDF}=window.jspdf;var pdf=new jsPDF();var p=window._up||{};
-  pdf.setFontSize(18);pdf.setTextColor(108,99,255);pdf.text('BizPro — Business Report',20,20);
-  pdf.setFontSize(9);pdf.setTextColor(100,100,100);
+  pdf.setFontSize(16);pdf.setTextColor(108,99,255);pdf.text('BizPro — Business Report',20,20);
+  pdf.setFontSize(8);pdf.setTextColor(100,100,100);
   pdf.text('Business: '+(p.businessName||'N/A')+'   Period: '+_rperiod.toUpperCase()+'   Generated: '+new Date().toLocaleDateString('en-IN'),20,27);
   var sa=fByPeriod(_data.sales),pu=fByPeriod(_data.purchases),ex=fByPeriod(_data.expenses),la=fByPeriod(_data.labour),ve=fByPeriod(_data.vehicles);
   var tS=sa.reduce((s,r)=>s+parseFloat(r.amount||0),0);
@@ -952,9 +1318,9 @@ function exportFullPDFReport(){
   var tL=la.reduce((s,r)=>s+parseFloat(r.total||0),0);
   var tF=ve.reduce((s,r)=>s+parseFloat(r.fuelCost||0),0);
   var net=tS-tP-tE-tL-tF;
-  pdf.autoTable({startY:35,head:[['Category','Amount (₹)']],body:[['Total Sales Revenue',tS.toFixed(2)],['Total Purchases',tP.toFixed(2)],['Operating Expenses',tE.toFixed(2)],['Labour Costs',tL.toFixed(2)],['Vehicle / Fuel',tF.toFixed(2)],['NET PROFIT / LOSS',net.toFixed(2)]],headStyles:{fillColor:[108,99,255]},bodyStyles:{fontSize:11}});
-  if(sa.length)pdf.autoTable({startY:pdf.lastAutoTable.finalY+10,head:[['Customer','Product','Amount','Date','Status']],body:sa.map(r=>[r.customer,r.product,'₹'+r.amount,r.date,r.status]),headStyles:{fillColor:[34,197,94]}});
-  if(ex.length)pdf.autoTable({startY:pdf.lastAutoTable.finalY+10,head:[['Description','Category','Amount','Date']],body:ex.map(r=>[r.desc,r.category,'₹'+r.amount,r.date]),headStyles:{fillColor:[239,68,68]}});
+  pdf.autoTable({startY:32,head:[['Category','Amount (₹)']],body:[['Total Sales Revenue',tS.toFixed(2)],['Total Purchases',tP.toFixed(2)],['Operating Expenses',tE.toFixed(2)],['Labour Costs',tL.toFixed(2)],['Vehicle / Fuel',tF.toFixed(2)],['NET PROFIT / LOSS',net.toFixed(2)]],headStyles:{fillColor:[108,99,255]},bodyStyles:{fontSize:9}});
+  if(sa.length)pdf.autoTable({startY:pdf.lastAutoTable.finalY+8,head:[['Customer','Product','Amount','Date','Status']],body:sa.map(r=>[r.customer,r.product,'₹'+r.amount,r.date,r.status]),headStyles:{fillColor:[34,197,94]},bodyStyles:{fontSize:8}});
+  if(ex.length)pdf.autoTable({startY:pdf.lastAutoTable.finalY+8,head:[['Description','Category','Amount','Date']],body:ex.map(r=>[r.desc,r.category,'₹'+r.amount,r.date]),headStyles:{fillColor:[239,68,68]},bodyStyles:{fontSize:8}});
   pdf.save('BizPro-Report-'+new Date().toISOString().split('T')[0]+'.pdf');
   showToast('Report PDF downloaded!','success');
 }
@@ -973,12 +1339,20 @@ async function loadAdminData(){
 
 function loadSettings(){
   var p=window._up||{};
-  sv('set-name',p.name||'');sv('set-biz',p.businessName||'');sv('set-gst',p.gst||'');sv('set-phone',p.phone||'');sv('set-address',p.address||'');
+  sv('set-name',p.name||'');sv('set-biz',p.businessName||'');sv('set-gst',p.gst||'');
+  sv('set-phone',p.phone||'');sv('set-address',p.address||'');
+  sv('set-bank-name',p.bankName||'');sv('set-bank-acc',p.bankAcc||'');
+  sv('set-bank-ifsc',p.bankIfsc||'');sv('set-upi',p.upi||'');
   var dk=document.documentElement.getAttribute('data-theme')==='dark';
   var dt=document.getElementById('dark-mode-toggle');if(dt)dt.checked=dk;
 }
 async function saveSettings(){
-  var u={name:gv('set-name'),businessName:gv('set-biz'),gst:gv('set-gst'),phone:gv('set-phone'),address:gv('set-address')};
+  var u={
+    name:gv('set-name'),businessName:gv('set-biz'),gst:gv('set-gst'),
+    phone:gv('set-phone'),address:gv('set-address'),
+    bankName:gv('set-bank-name'),bankAcc:gv('set-bank-acc'),
+    bankIfsc:gv('set-bank-ifsc'),upi:gv('set-upi')
+  };
   try{
     await window._fb.updateDoc(window._fb.doc(window._db,'users',window._cu.uid),u);
     window._up={...window._up,...u};
@@ -989,14 +1363,14 @@ async function saveSettings(){
 }
 function toggleCompact(){
   var on=document.getElementById('compact-toggle').checked;
-  document.querySelectorAll('td').forEach(td=>td.style.padding=on?'7px 14px':'12px 14px');
+  document.querySelectorAll('td').forEach(td=>td.style.padding=on?'5px 12px':'10px 12px');
 }
 
 function exportPDF(type){
   var {jsPDF}=window.jspdf;var pdf=new jsPDF();var p=window._up||{};
   var titles={sales:'Sales Report',purchases:'Purchases Report',expenses:'Expenses Report',labour:'Labour Report',vehicles:'Vehicle Trips',invoices:'Invoices'};
-  pdf.setFontSize(16);pdf.setTextColor(108,99,255);pdf.text('BizPro — '+(titles[type]||type),20,20);
-  pdf.setFontSize(9);pdf.setTextColor(100,100,100);pdf.text((p.businessName||'')+'   Generated: '+new Date().toLocaleDateString('en-IN'),20,27);
+  pdf.setFontSize(14);pdf.setTextColor(108,99,255);pdf.text('BizPro — '+(titles[type]||type),20,20);
+  pdf.setFontSize(8);pdf.setTextColor(100,100,100);pdf.text((p.businessName||'')+'   Generated: '+new Date().toLocaleDateString('en-IN'),20,26);
   var heads={sales:[['Customer','Product','Amount','Date','Payment','Status']],purchases:[['Supplier','Item','Qty','Amount','Date']],expenses:[['Description','Category','Amount','Date']],labour:[['Worker','Work Type','Days','Rate','Total','Date']],vehicles:[['Vehicle','Driver','From','To','Km','Fuel','Date']],invoices:[['Invoice No','Customer','Subtotal','GST%','Total','Date']]};
   var rows={
     sales:_data.sales.map(r=>[r.customer,r.product,'₹'+r.amount,r.date,r.payment||'Cash',r.status]),
@@ -1006,7 +1380,7 @@ function exportPDF(type){
     vehicles:_data.vehicles.map(r=>[r.vehicleNum,r.driver,r.from,r.to,r.distance+'km','₹'+r.fuelCost,r.date]),
     invoices:_data.invoices.map(r=>[r.invNumber,r.customer,'₹'+r.subtotal,r.gstPct+'%','₹'+r.total,r.date])
   };
-  pdf.autoTable({startY:32,head:heads[type]||[[]],body:rows[type]||[],headStyles:{fillColor:[108,99,255]},alternateRowStyles:{fillColor:[248,248,255]}});
+  pdf.autoTable({startY:30,head:heads[type]||[[]],body:rows[type]||[],headStyles:{fillColor:[108,99,255]},alternateRowStyles:{fillColor:[248,248,255]},bodyStyles:{fontSize:8}});
   pdf.save('BizPro-'+type+'-'+new Date().toISOString().split('T')[0]+'.pdf');
   showToast('PDF exported!','success');
 }
@@ -1041,6 +1415,5 @@ function installPWA(){if(!_pwaPrompt)return;_pwaPrompt.prompt();_pwaPrompt.userC
 if('serviceWorker'in navigator)navigator.serviceWorker.register('service-worker.js').catch(()=>{});
 document.querySelectorAll('.modal-overlay').forEach(el=>el.addEventListener('click',e=>{if(e.target===el)el.classList.remove('open');}));
 </script>
-
 </body>
 </html>
